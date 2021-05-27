@@ -20,12 +20,6 @@ class Auth extends CI_Controller
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->library('form_validation');
-    }
-
     // Call View Function to show Login Page
     public function index()
     {
