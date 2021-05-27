@@ -81,7 +81,7 @@ class Auth extends CI_Controller
         }
     }
 
-    // Call View Function to show Registration Page
+    // Call View Function to show Registration Page from (views/auth/login)
     public function registration()
     {
         if ($this->session->userdata('email')) {
