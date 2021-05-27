@@ -24,7 +24,8 @@ class Auth extends CI_Controller
 
         // Checks if form_validation has not run, shows login page. Else run _login funtion
         if ($this->form_validation->run() == false) {
-            $data['title'] = "Sistem Login";
+            // Title
+            $data['title'] = "HRMS";
 
             $this->load->view('templates/auth_header', $data);
             $this->load->view('auth/login');
@@ -55,6 +56,7 @@ class Auth extends CI_Controller
                 if (password_verify($password, $user['password'])) {
                     // Store email and role to array data
                     $data = [
+                        'id' => $user['id'],
                         'email' => $user['email'],
                         'role_id' => $user['role_id']
                     ];
