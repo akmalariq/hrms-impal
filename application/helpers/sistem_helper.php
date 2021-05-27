@@ -1,8 +1,12 @@
 <?php
 
+// Check session login
 function is_logged_in()
 {
+    // In order to get $this-> we use $ci with get_instance() to create $ci->
     $ci = get_instance();
+
+    // Checks if userdata exist in session, if not redirect to auth
     if (!$ci->session->userdata('email')) {
         redirect('auth');
     } else {
