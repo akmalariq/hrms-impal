@@ -16,7 +16,18 @@ class Admin extends CI_Controller
         // echo "selamat datang " . $data['user']['name'];
 
         $data['title'] = "Dashboard";
-        $data['users'] = $this->db->get('user')->result_array();
+
+
+        $keyword = $this->input->post('keyword');
+        if (!$keyword) {
+            $data['users'] = $this->db->get('user')->result_array();
+        } else {
+            $this->load->model('users_model');
+            $search = $this->input->post('keyword');
+            $data['users'] =  $this->users_model->search($search);
+            // var_dump($data['users']);
+            // die;
+        }
 
 
         $this->load->view('templates/header', $data);

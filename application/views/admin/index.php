@@ -6,8 +6,17 @@
 
     <div class="row">
         <div class="col-lg-12">
+
+            <form action="" method="post" class="form-inline">
+                <div class="form-group mx-sm-3  mb-4">
+                    <input type="text" class="form-control col-xs-4" name="keyword" autofocus placeholder="keyword" autocomplete="off">
+                </div>
+                <button type="submit" name="cari" class="btn btn-primary mb-4">Cari</button>
+            </form>
+
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= $this->session->flashdata('message'); ?>
+
             <table class="table table-hover">
                 <thead>
                     <tr>
