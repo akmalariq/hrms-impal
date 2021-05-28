@@ -9,6 +9,7 @@
 
             <form action="" method="post" class="form-inline">
                 <div class="form-group mx-sm-3  mb-4">
+                    <label for="keyword" class="mx-sm-3">Search :</label>
                     <input type="text" class="form-control col-xs-4" name="keyword" autofocus placeholder="keyword" autocomplete="off">
                 </div>
                 <button type="submit" name="cari" class="btn btn-primary mb-4">Cari</button>
@@ -47,7 +48,8 @@
                             <td><?= date('d F Y', $u['date_created']) ?></td>
 
                             <td>
-                                <a href="<?= base_url("admin/edit/") . "?id=" . $u['id'] ?>" class="badge badge-success">edit</a>
+                                <a href="<?= base_url('admin/roleaccess/') . $u['id']; ?>" class="badge badge-warning">access</a>
+                                <a href="<?= base_url("admin/edit/") . $u['id'] ?>" class="badge badge-success">edit</a>
                                 <a href="<?= base_url("admin/delete/") . $u['id'] ?>" class="badge badge-danger">delete</a>
                             </td>
                         </tr>

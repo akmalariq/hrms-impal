@@ -25,10 +25,7 @@ class Admin extends CI_Controller
             $this->load->model('users_model');
             $search = $this->input->post('keyword');
             $data['users'] =  $this->users_model->search($search);
-            // var_dump($data['users']);
-            // die;
         }
-
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -94,9 +91,9 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Access Changed!</div>');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        $data['user'] = $this->db->get_where('user', ['id' => $this->input->get('id', True)])->row_array();
+        $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array();
 
         // Sets rules from form validation (Check the inputs if valid)
 
@@ -142,5 +139,12 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profile has been updated</div>');
             redirect('admin');
         }
+    }
+
+    public function delete($id)
+    {
+        $this->db->delete('user', array('id' => $id));
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User has been deleted</div>');
+        redirect("admin");
     }
 }
