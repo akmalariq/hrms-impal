@@ -52,14 +52,14 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function roleAccess($role_id)
+    public function roleAccess()
+
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         // echo "selamat datang " . $data['user']['name'];
 
         $data['title'] = "Role Access";
 
-        $this->db->where("id =", $role_id);
         $data['role'] = $this->db->get('user_role')->row_array();
 
         if ($this->session->userdata('id') != 1) {
