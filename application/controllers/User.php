@@ -25,6 +25,7 @@ class User extends CI_Controller
         parent::__construct();
         is_logged_in();
     }
+
     public function index()
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
@@ -129,5 +130,19 @@ class User extends CI_Controller
                 redirect('user');
             }
         }
+    }
+
+    public function schedule()
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        // echo "selamat datang " . $data['user']['name'];
+
+        $data['title'] = "Schedule";
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/schedule', $data);
+        $this->load->view('templates/footer');
     }
 }
