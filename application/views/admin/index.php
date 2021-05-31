@@ -39,11 +39,15 @@
 
                             <td><?= $u['email']; ?></td>
 
-                            <?php if ($u['role_id'] == 1) : ?>
-                                <td>Admin</td>
-                            <?php elseif ($u['role_id'] == 2) : ?>
-                                <td>Member</td>
-                            <?php endif; ?>
+                            <td>
+                                <?php
+                                $j = 0;
+                                while ($u['role_id'] !=  $user_role[$j]['id']) {
+                                    $j++;
+                                }
+                                echo $user_role[$j]['role'];
+                                ?>
+                            </td>
 
                             <td><?= date('d F Y', $u['date_created']) ?></td>
 

@@ -13,6 +13,7 @@ class Admin extends CI_Controller
     public function index()
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $data['user_role'] = $this->db->get('user_role')->result_array();
         // echo "selamat datang " . $data['user']['name'];
 
         $data['title'] = "Dashboard";
@@ -51,16 +52,18 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function roleAccess($role_id)
+    public function roleAccess()
     {
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         // echo "selamat datang " . $data['user']['name'];
 
         $data['title'] = "Role Access";
 
-        $data['role'] = $this->db->get_where('user_role', ['id' => $role_id])->row_array();
+        $data['role'] = $this->db->get('user_role')->row_array();
 
-        $this->db->where('id !=', 1);
+        if (!$this->session->userdata('id') == 1) {
+            $this->db->where('id !=', 1);
+        }
         $data['menu'] = $this->db->get('user_menu')->result_array();
 
         $this->load->view('templates/header', $data);
