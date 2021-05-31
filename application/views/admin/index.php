@@ -52,7 +52,7 @@
                             <td><?= date('d F Y', $u['date_created']) ?></td>
 
                             <td>
-                                <a href="<?= base_url('admin/roleaccess/') . $u['id']; ?>" class="badge badge-warning">access</a>
+                                <a href="<?= base_url('admin/roleaccess/') . $u['role_id']; ?>" class="badge badge-warning">access</a>
                                 <a href="<?= base_url("admin/edit/") . $u['id'] ?>" class="badge badge-success">edit</a>
                                 <a href="<?= base_url("admin/delete/") . $u['id'] ?>" class="badge badge-danger">delete</a>
                             </td>

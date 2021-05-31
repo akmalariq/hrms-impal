@@ -19,6 +19,15 @@
                     <!-- check input error -->
                     <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
+                <div class="form-group">
+                    <label for="name">Role:</label>
+                    <select class="form-control" id="role_id" name="role_id">
+                        <option value="<?= $user['role_id'] ?>">Select</option>
+                        <option value="1">Administrator</option>
+                        <option value="2">Student</option>
+                        <option value="3">Practicum Assistant</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary btn-user btn-block">
                     Edit Account
                 </button>

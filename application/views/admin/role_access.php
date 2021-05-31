@@ -29,6 +29,8 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" <?= check_access($role['id'], $m['id']); ?> data-role="<?= $role['id']; ?>" data-menu="<?= $m['id']; ?>">
                                 </div>
+                                <h1> <?= $role['id'] ?></h1>
+                                <h1> <?= $m['id'] ?></h1>
                             </td>
                         </tr>
                         <?php $i++ ?>

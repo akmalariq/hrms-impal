@@ -52,16 +52,17 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function roleAccess()
+    public function roleAccess($role_id)
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         // echo "selamat datang " . $data['user']['name'];
 
         $data['title'] = "Role Access";
 
+        $this->db->where("id =", $role_id);
         $data['role'] = $this->db->get('user_role')->row_array();
 
-        if (!$this->session->userdata('id') == 1) {
+        if ($this->session->userdata('id') != 1) {
             $this->db->where('id !=', 1);
         }
         $data['menu'] = $this->db->get('user_menu')->result_array();
@@ -130,7 +131,7 @@ class Admin extends CI_Controller
                 // 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 
                 // role_id is default to 2 for a user to be an admin, it needes to be referred by other admins
-                // 'role_id' => 2,
+                'role_id' => $this->input->post('role_id', true),
 
                 // is_active is default to 1 (active) until further function is implemented (user can authenticate their own email)
                 // 'is_active' => 1,
