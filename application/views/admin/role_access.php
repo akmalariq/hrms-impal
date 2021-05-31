@@ -15,7 +15,9 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Menu</th>
-                        <th scope="col">Access</th>
+                        <th scope="col">Administrator</th>
+                        <th scope="col">Student</th>
+                        <th scope="col">Practicum Assistant</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +29,17 @@
 
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" <?= check_access($role['id'], $m['id']); ?> data-role="<?= $role['id']; ?>" data-menu="<?= $m['id']; ?>">
+                                    <input class="form-check-input" type="checkbox" <?= check_access(1, $m['id']); ?> data-role="<?= 1; ?>" data-menu="<?= $m['id']; ?>">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" <?= check_access(2, $m['id']); ?> data-role="<?= 2; ?>" data-menu="<?= $m['id']; ?>">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" <?= check_access(3, $m['id']); ?> data-role="<?= 3; ?>" data-menu="<?= $m['id']; ?>">
                                 </div>
                             </td>
                         </tr>
