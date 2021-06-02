@@ -5,7 +5,7 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
 
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <?= $this->session->flashdata('message'); ?>
 
             <h5>Role : <?= $role['role']; ?></h5>
@@ -18,6 +18,7 @@
                         <th scope="col">Administrator</th>
                         <th scope="col">Student</th>
                         <th scope="col">Practicum Assistant</th>
+                        <th scope="col">Candidate Practicum Assistant</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +41,11 @@
                             <td>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" <?= check_access(3, $m['id']); ?> data-role="<?= 3; ?>" data-menu="<?= $m['id']; ?>">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" <?= check_access(4, $m['id']); ?> data-role="<?= 4; ?>" data-menu="<?= $m['id']; ?>">
                                 </div>
                             </td>
                         </tr>
