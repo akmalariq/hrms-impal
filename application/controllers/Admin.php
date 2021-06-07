@@ -151,4 +151,34 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User has been deleted</div>');
         redirect("admin");
     }
+
+    public function announcements()
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+
+        if (($this->input->post('title', true) == false) || ($this->input->post('announcement', true) == false)) {
+
+            $data['title'] = "Create Announcements";
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/announcements', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $newdata = [
+                // name is filtered through XSS filter and htmlspecialchars
+                'title' => htmlspecialchars($this->input->post('title', true)),
+
+                // email is filtered through XSS filter and htmlspecialchars
+                'announcement' => htmlspecialchars($this->input->post('announcement', true)),
+
+                'date_created' => time()
+            ];
+
+            $this->db->insert('announcements', $newdata);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Success</div>');
+            redirect('practicum/announcements');
+        }
+    }
 }

@@ -39,4 +39,23 @@ class Practicum extends CI_Controller
         $this->load->view('practicum/schedule', $data);
         $this->load->view('templates/footer');
     }
+
+    public function announcements()
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+
+        $this->db->select('*');
+        $this->db->from('announcements');
+        $this->db->order_by('date_created', 'desc');
+        $data['announcements'] = $this->db->get()->result_array();
+
+
+        $data['title'] = "Announcements";
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('practicum/announcements', $data);
+        $this->load->view('templates/footer');
+    }
 }
