@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2021 at 10:41 AM
+-- Generation Time: Jun 02, 2021 at 11:24 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -143,7 +143,8 @@ INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_a
 (98, 'Waino Roberts', 'ianderson@marvincorkery.org', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
 (99, 'Dr. Brown Cummerata', 'elda10@predoviclemke.com', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
 (100, 'Tillman Keeling III', 'gabbott@aufderhar.com', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(102, 'john', 'john@john.john', 'default.jpg', '$2y$10$oo0rkfHkTTtK9DiAdjtOEumAcdb5J.YvbKgqpWXNHsc0WodC8QWv6', 3, 1, 1622438723);
+(102, 'john', 'john@john.john', 'default.jpg', '$2y$10$oo0rkfHkTTtK9DiAdjtOEumAcdb5J.YvbKgqpWXNHsc0WodC8QWv6', 3, 1, 1622438723),
+(103, 'angel angel', 'angel@angel.angel', 'default.jpg', '$2y$10$Lz5cbzql205CFceRTbc0VeSsk4cqL2R.8Gk25D228Uy0lyzrjuqqi', 2, 1, 1622453504);
 
 -- --------------------------------------------------------
 
@@ -162,14 +163,21 @@ CREATE TABLE `user_access_menu` (
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
-(3, 2, 2),
-(10, 1, 2),
-(14, 3, 1),
-(15, 3, 2),
-(16, 3, 3),
-(17, 1, 3),
-(18, 1, 1),
-(19, 1, 4);
+(1, 2, 2),
+(3, 3, 2),
+(4, 1, 1),
+(5, 1, 4),
+(6, 3, 4),
+(7, 2, 4),
+(8, 1, 2),
+(9, 1, 3),
+(10, 3, 3),
+(11, 1, 7),
+(12, 4, 7),
+(13, 4, 2),
+(14, 4, 4),
+(31, 1, 5),
+(32, 4, 5);
 
 -- --------------------------------------------------------
 
@@ -189,8 +197,9 @@ CREATE TABLE `user_menu` (
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (1, 'Admin'),
 (2, 'User'),
-(3, 'Menu'),
-(4, 'Practicum');
+(3, 'Assistant'),
+(4, 'Practicum'),
+(5, 'Recruitment');
 
 -- --------------------------------------------------------
 
@@ -210,7 +219,8 @@ CREATE TABLE `user_role` (
 INSERT INTO `user_role` (`id`, `role`) VALUES
 (1, 'Administrator'),
 (2, 'Student'),
-(3, 'Practicum Assistant');
+(3, 'Practicum Assistant'),
+(4, 'Candidate');
 
 -- --------------------------------------------------------
 
@@ -235,12 +245,17 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (1, 1, 'Dashboard', 'admin', 'fas da-fw fa-tachometer-alt', 1),
 (2, 2, 'My Profile', 'user', 'fas fa-fw fa-user', 1),
 (3, 2, 'Edit Profile', 'user/edit', 'fas fa-fw fa-user-edit', 1),
-(4, 3, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 1),
-(5, 3, 'Submenu Management', 'menu/submenu', 'fas fa-fw fa-folder-open', 1),
-(6, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-tie', 1),
-(7, 2, 'Change Password', 'user/change_password', 'fas fa-fw fa-lock', 1),
-(10, 1, 'Role Access', 'admin/roleaccess', 'fas fa-fw fa-user-tie', 1),
-(11, 4, 'Schedule', 'practicum', 'far fa-fw fa-calendar-alt', 1);
+(4, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-tie', 1),
+(5, 2, 'Change Password', 'user/change_password', 'fas fa-fw fa-lock', 1),
+(6, 1, 'Role Access', 'admin/roleaccess', 'fas fa-fw fa-user-tie', 1),
+(7, 4, 'Schedule', 'practicum', 'far fa-fw fa-calendar-alt', 1),
+(8, 3, 'Finance', 'assistant/finance', 'fas fa-fw fa-wallet', 1),
+(9, 3, 'Replacements', 'assistant/replacements', 'fas fa-fw fa-people-arrows', 1),
+(10, 4, 'Complaints', 'user/complaints', 'fas fa-fw fa-exclamation-circle', 1),
+(11, 4, 'Announcements', 'user/announcements', 'fas fa-fw fa-bullhorn', 1),
+(12, 4, 'Attendance', 'practicum/attendance', 'fas fa-fw fa-user-check', 1),
+(13, 3, 'Validate Attendance', 'assistant/attendance', 'fas fa-fw fa-user-check', 1),
+(20, 5, 'Recruitment Phase', 'recruitment/phase', 'fas fa-fw fa-user-plus', 1);
 
 --
 -- Indexes for dumped tables
@@ -284,31 +299,31 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

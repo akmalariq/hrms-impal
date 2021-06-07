@@ -6,51 +6,51 @@
 
     <?= $this->session->flashdata('message') ?>
 
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-    <div class="card my-4">
-        <div class="card-header">
-            Mata Kuliah: A
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Modul 1: Lorem Ipsum</h5>
-            <p class="card-text">Date</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
+    <!-- QUERY SCHEDULE -->
+    <?php
+    $user_id = $this->session->userdata('id');
+    $querySchedule = "SELECT    `practicum_mata_kuliah`.`id`, `mata_kuliah`, `modul`, `date`, `attendance`
+                        FROM    `practicum_mata_kuliah` JOIN `practicum_modul`
+                          ON    `practicum_mata_kuliah`.`id` = `practicum_modul`.`mata_kuliah_id`
+                        JOIN    `practicum_attendance`
+                          ON    `practicum_attendance`.`modul_id` = `practicum_modul`.`id`
+                        JOIN    `practicum_access`
+                       WHERE    `practicum_access`.`user_id` = $user_id
+                         AND    `practicum_attendance`.`user_id` = $user_id
+                    ORDER BY    `date` ASC
+        ";
+    $mata_kuliah = $this->db->query($querySchedule)->result_array();
+    ?>
 
-    <div class="card my-4">
-        <div class="card-header">
-            Mata Kuliah: A
+    <!-- LOOPING SCHEDULE -->
+    <?php foreach ($mata_kuliah as $m) : ?>
+        <div class="card my-4">
+            <div class="card-header">
+                <?= $m['mata_kuliah'] ?>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    <?= $m['modul'] ?>
+                </h5>
+                <p class="card-text">
+                    <?= date('d F Y', $m['date']) ?>
+                </p>
+                <p class="card-text">
+                    <?php
+                    if ($m['attendance'] == 0) {
+                        echo "Absent";
+                    } else {
+                        echo "Present";
+                    }
+                    ?>
+                </p>
+            </div>
         </div>
-        <div class="card-body">
-            <h5 class="card-title">Modul 2: Lorem Ipsum</h5>
-            <p class="card-text">Date</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
 
-    <div class="card my-4">
-        <div class="card-header">
-            Mata Kuliah: A
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Modul 3: Lorem Ipsum</h5>
-            <p class="card-text">Date</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-
-    <div class="card my-4">
-        <div class="card-header">
-            Mata Kuliah: A
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Modul 4: Lorem Ipsum</h5>
-            <p class="card-text">Date</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-
+    <?php endforeach; ?>
 
 </div>
 <!-- /.container-fluid -->
