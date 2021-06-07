@@ -40,17 +40,17 @@ class Assistant extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function finance()
+    public function replacements()
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         // echo "selamat datang " . $data['user']['name'];
 
-        $data['title'] = "Finance";
+        $data['title'] = "Replacements";
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('assistant/finance', $data);
+        $this->load->view('assistant/replacements', $data);
         $this->load->view('templates/footer');
     }
 }
