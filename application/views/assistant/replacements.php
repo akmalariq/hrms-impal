@@ -15,9 +15,9 @@
     $querySchedule = "SELECT    `practicum_mata_kuliah`.`id`, `mata_kuliah`, `modul`, `date`, `attendance`
                         FROM    `practicum_mata_kuliah` JOIN `practicum_modul`
                           ON    `practicum_mata_kuliah`.`id` = `practicum_modul`.`mata_kuliah_id`
-                        JOIN    `practicum_attendance`
-                          ON    `practicum_attendance`.`modul_id` = `practicum_modul`.`id`
-                       WHERE    `practicum_attendance`.`user_id` = $user_id
+                        JOIN    `assistant_attendance`
+                          ON    `assistant_attendance`.`modul_id` = `practicum_modul`.`id`
+                       WHERE    `assistant_attendance`.`user_id` = $user_id
                     ORDER BY    `date` ASC
         ";
     $mata_kuliah = $this->db->query($querySchedule)->result_array();
@@ -44,6 +44,7 @@
                         echo "Present";
                     }
                     ?>
+
                 </p>
             </div>
         </div>

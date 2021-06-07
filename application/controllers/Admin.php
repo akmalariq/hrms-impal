@@ -151,4 +151,86 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User has been deleted</div>');
         redirect("admin");
     }
+
+    public function announcements()
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+
+        if (($this->input->post('title', true) == false) || ($this->input->post('announcement', true) == false)) {
+
+            $data['title'] = "Create Announcements";
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/announcements', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $newdata = [
+                // name is filtered through XSS filter and htmlspecialchars
+                'title' => htmlspecialchars($this->input->post('title', true)),
+
+                // email is filtered through XSS filter and htmlspecialchars
+                'announcement' => htmlspecialchars($this->input->post('announcement', true)),
+
+                'date_created' => time()
+            ];
+
+            $this->db->insert('announcements', $newdata);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Success</div>');
+            redirect('practicum/announcements');
+        }
+    }
+
+    public function assign($id)
+    {
+
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $data['assigned_user'] = $this->db->get_where('user', ['id' => $id])->row_array();
+
+        $data['title'] = "Assign Class";
+
+        $this->db->select('user_assign.id AS assign_id, mata_kuliah_id, role');
+        $this->db->from('user_assign');
+        $this->db->join('user_role', 'user_role.id = user_assign.role_id');
+        $this->db->where('user_id', $id);
+        $this->db->order_by("mata_kuliah_id", "ASC");
+        $data['assigned'] = $this->db->get()->result_array();
+
+
+        $data['mata_kuliah'] = $this->db->get('practicum_mata_kuliah')->result_array();
+        // $data['menu'] = $this->db->get('user_menu')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/assign', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function assignadd()
+    {
+
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        // $data['assigned_user'] = $this->db->get_where('user', ['id' => $id])->row_array();
+
+        $data['title'] = "Assign Class";
+
+        // $this->db->select('mata_kuliah_id, role');
+        // $this->db->from('user_assign');
+        // $this->db->join('user_role', 'user_role.id = user_assign.role_id');
+        // $this->db->where('user_id', $id);
+        // $this->db->order_by("mata_kuliah_id", "ASC");
+        // $data['assigned'] = $this->db->get()->result_array();
+
+
+        // $data['mata_kuliah'] = $this->db->get('practicum_mata_kuliah')->result_array();
+        // // $data['menu'] = $this->db->get('user_menu')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/assignadd', $data);
+        $this->load->view('templates/footer');
+    }
 }
