@@ -29,9 +29,6 @@ class Practicum extends CI_Controller
     public function index()
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
-        $data['practicum_access'] = $this->db->get_where('practicum_access', ['id' => $this->session->userdata('id')])->row_array();
-        $data['practicum_mata_kuliah'] = $this->db->get_where('practicum_mata_kuliah', ['id' => $this->session->userdata('id')])->row_array();
-        $data['practicum_modul'] = $this->db->get_where('practicum_modul', ['id' => $this->session->userdata('id')])->row_array();
 
 
         $data['title'] = "Schedule";

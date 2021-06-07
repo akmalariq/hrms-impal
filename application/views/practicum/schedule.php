@@ -12,14 +12,17 @@
     <!-- QUERY SCHEDULE -->
     <?php
     $user_id = $this->session->userdata('id');
-    $querySchedule = "SELECT    `practicum_mata_kuliah`.`id`, `mata_kuliah`, `practicum_modul`.`modul`, `date`
-                    FROM    `practicum_mata_kuliah` JOIN `practicum_modul` JOIN `practicum_access`
-                      ON    `practicum_mata_kuliah`.`id` = `practicum_modul`.`mata_kuliah_id`
-                   WHERE    `practicum_access`.`user_id` = $user_id
-                ORDER BY    `practicum_modul`.`date` ASC
+    $querySchedule = "SELECT    `practicum_mata_kuliah`.`id`, `mata_kuliah`, `modul`, `date`, `attendance`
+                        FROM    `practicum_mata_kuliah` JOIN `practicum_modul`
+                          ON    `practicum_mata_kuliah`.`id` = `practicum_modul`.`mata_kuliah_id`
+                        JOIN    `practicum_attendance`
+                          ON    `practicum_attendance`.`modul_id` = `practicum_modul`.`id`
+                        JOIN    `practicum_access`
+                       WHERE    `practicum_access`.`user_id` = $user_id
+                         AND    `practicum_attendance`.`user_id` = $user_id
+                    ORDER BY    `date` ASC
         ";
     $mata_kuliah = $this->db->query($querySchedule)->result_array();
-
     ?>
 
     <!-- LOOPING SCHEDULE -->
@@ -34,6 +37,15 @@
                 </h5>
                 <p class="card-text">
                     <?= date('d F Y', $m['date']) ?>
+                </p>
+                <p class="card-text">
+                    <?php
+                    if ($m['attendance'] == 0) {
+                        echo "Absent";
+                    } else {
+                        echo "Present";
+                    }
+                    ?>
                 </p>
             </div>
         </div>
