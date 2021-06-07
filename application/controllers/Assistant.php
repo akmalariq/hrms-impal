@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Practicum extends CI_Controller
+class Assistant extends CI_Controller
 {
 
     /**
@@ -29,17 +29,28 @@ class Practicum extends CI_Controller
     public function index()
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
-        $data['practicum_access'] = $this->db->get_where('practicum_access', ['id' => $this->session->userdata('id')])->row_array();
-        $data['practicum_mata_kuliah'] = $this->db->get_where('practicum_mata_kuliah', ['id' => $this->session->userdata('id')])->row_array();
-        $data['practicum_modul'] = $this->db->get_where('practicum_modul', ['id' => $this->session->userdata('id')])->row_array();
+        // echo "selamat datang " . $data['user']['name'];
 
-
-        $data['title'] = "Schedule";
+        $data['title'] = "Finance";
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('practicum/schedule', $data);
+        $this->load->view('assistant/finance', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function finance()
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        // echo "selamat datang " . $data['user']['name'];
+
+        $data['title'] = "Finance";
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('assistant/finance', $data);
         $this->load->view('templates/footer');
     }
 }
