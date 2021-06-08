@@ -31,7 +31,7 @@ class Recruitment extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         // echo "selamat datang " . $data['user']['name'];
 
-        $data['title'] = "Schedule";
+        $data['title'] = "Recruitment Phase";
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -40,17 +40,17 @@ class Recruitment extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function phase()
+    public function test()
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         // echo "selamat datang " . $data['user']['name'];
 
-        $data['title'] = "Schedule";
+        $data['title'] = "Test";
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('recruitment/phase', $data);
+        $this->load->view('recruitment/test', $data);
         $this->load->view('templates/footer');
     }
 }

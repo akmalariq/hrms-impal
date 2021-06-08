@@ -12,7 +12,7 @@
 
     ?>
 
-    <h3 class="float-right">Salary: <span class="text-success"><?= "Rp " . number_format($attendance["attendance"] * 30000, 2, ',', '.') ?></span></h3>
+    <h3 class="float-right">Salary: <span><?= "Rp " . number_format($attendance["attendance"] * 30000, 2, ',', '.') ?></span></h3>
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
 
@@ -53,7 +53,7 @@
                     <?= $m['mata_kuliah'] ?>
                 </h4>
                 <div class="float-right">
-                    <a class="btn btn-primary" href="<?= base_url('assistant/attendance') ?>">
+                    <a class="btn btn-primary" href="<?= base_url('assistant/attendance/') . $m['id'] ?>">
                         <i class="fas fa-fw fa-user-check"></i>
                         Validate Attendance
                     </a>
