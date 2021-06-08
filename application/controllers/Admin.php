@@ -209,6 +209,7 @@ class Admin extends CI_Controller
     }
 
     public function assignadd()
+    // masih banyak error cek lagi
     {
 
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
@@ -232,5 +233,47 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/assignadd', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function announcementsedit($id)
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $data['announcements'] = $this->db->get_where('announcements', ['id' => $id])->row_array();
+
+        // Sets rules from form validation (Check the inputs if valid)
+
+        // Checks if form_validation has not run, shows login page. Else get input form
+        if ($this->input->post('title', true) == false) {
+
+            $data['title'] = "Announcements Edit";
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/announcementsedit', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $newdata = [
+                // title is filtered through XSS filter and htmlspecialchars
+                'title' => htmlspecialchars($this->input->post('title', true)),
+
+                // announcement is filtered through XSS filter and htmlspecialchars
+                'announcement' => htmlspecialchars($this->input->post('announcement', true)),
+
+                'date_created' => time()
+            ];
+
+            $this->db->where('id', $data['announcements']['id']);
+            $this->db->update('announcements', $newdata);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Announcement has been updated</div>');
+            redirect('practicum/announcements');
+        }
+    }
+
+    public function announcementsdelete($id)
+    {
+        $this->db->delete('announcements', array('id' => $id));
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User has been deleted</div>');
+        redirect("practicum/announcements");
     }
 }
