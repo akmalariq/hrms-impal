@@ -32,11 +32,46 @@
 
                             <td><?= $c['course']; ?></td>
                             <td>
-                                <?php $found = array_search($c['id'], array_column($schedule, 'id')); ?>
-                                <?php if ($found === 0 || $found) : ?>
-                                    <a href="<?= base_url("admin/deletecourse/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-danger">Delete</a>
+                                <?php
+                                $this->db->select('schedule.role_id, course');
+                                $this->db->from('user');
+                                $this->db->join('schedule', 'user.id = schedule.user_id');
+                                $this->db->join('user_role', 'schedule.role_id = user_role.id');
+                                $this->db->join('modul', 'schedule.modul_id = modul.id');
+                                $this->db->join('course', 'modul.course_id = course.id');
+                                $this->db->where('user_id', $assigned_user['id']);
+                                $this->db->where('course_id', $c['id']);
+                                $this->db->where('schedule.role_id', 2);
+                                $student = $this->db->get()->row_array();
+
+                                $this->db->select('schedule.role_id, course');
+                                $this->db->from('user');
+                                $this->db->join('schedule', 'user.id = schedule.user_id');
+                                $this->db->join('user_role', 'schedule.role_id = user_role.id');
+                                $this->db->join('modul', 'schedule.modul_id = modul.id');
+                                $this->db->join('course', 'modul.course_id = course.id');
+                                $this->db->where('user_id', $assigned_user['id']);
+                                $this->db->where('course_id', $c['id']);
+                                $this->db->where('schedule.role_id', 3);
+                                $assistant = $this->db->get()->row_array();
+
+                                // echo var_export($student);
+                                // die;
+                                ?>
+                                <?php if ($student || $assistant) : ?>
+                                    <?php if ($student && $assistant) : ?>
+                                        <a href="<?= base_url("admin/deletecourse/") . $assigned_user['id'] . "/" . 2 . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-danger">Student</a>
+                                        <a href="<?= base_url("admin/deletecourse/") . $assigned_user['id'] . "/" . 3 . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-danger">Assistant</a>
+                                    <?php elseif ($student) : ?>
+                                        <a href="<?= base_url("admin/deletecourse/") . $assigned_user['id'] . "/" . 2 . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-danger">Student</a>
+                                        <a href="<?= base_url("admin/addcourse/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-success">Assistant</a>
+                                    <?php elseif ($assistant) : ?>
+                                        <a href="<?= base_url("admin/addcourse/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-success">Student</a>
+                                        <a href="<?= base_url("admin/deletecourse/") . $assigned_user['id'] . "/" . 3 . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-danger">Assistant</a>
+                                    <?php endif; ?>
                                 <?php else : ?>
-                                    <a href="<?= base_url("admin/addcourse/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-success">Add</a>
+                                    <a href="<?= base_url("admin/addcourse/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-success">Student</a>
+                                    <a href="<?= base_url("admin/addcourse/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-success">Assistant</a>
                                 <?php endif; ?>
                             </td>
                         </tr>

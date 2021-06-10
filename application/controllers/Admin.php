@@ -213,16 +213,18 @@ class Admin extends CI_Controller
 
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         $data['assigned_user'] = $this->db->get_where('user', ['id' => $id])->row_array();
-        $data['modul'] = $this->db->get('modul')->result_array();
         $data['course'] = $this->db->get('course')->result_array();
 
         $data['title'] = "Assign Class";
 
-        $this->db->select('course.id, role_id');
-        $this->db->from('schedule');
-        $this->db->join('modul', 'modul.id = schedule.modul_id');
-        $this->db->join('course', 'course.id = modul.course_id');
+        $this->db->select('name, sid, class, role, course, modul, modul.date, attend');
+        $this->db->from('user');
+        $this->db->join('schedule', 'user.id = schedule.user_id');
+        $this->db->join('user_role', 'schedule.role_id = user_role.id');
+        $this->db->join('modul', 'schedule.modul_id = modul.id');
+        $this->db->join('course', 'modul.course_id = course.id');
         $this->db->where('user_id', $id);
+        $this->db->order_by("date", "ASC");
         $data['schedule'] = $this->db->get()->result_array();
 
 
@@ -250,26 +252,26 @@ class Admin extends CI_Controller
                 'user_id' => $id,
                 'role_id' => $role_id,
                 'modul_id' => $m['id'],
-                'date' => 0,
                 'attend' => 0
             ];
             $this->db->insert("schedule", $data);
         }
-        redirect("admin/assign/" . $id);
+        redirect("admin/assignadd/" . $id);
     }
 
-    public function deletecourse($id, $course_id)
+    public function deletecourse($id, $role_id, $course_id)
     // masih banyak error cek lagi
     {
         $modul = $this->db->get_where('modul', ['course_id' => $course_id])->result_array();
 
         foreach ($modul as $m) {
             $data = [
-                'modul_id' => $m['id']
+                'modul_id' => $m['id'],
+                'role_id' => $role_id
             ];
             $this->db->delete("schedule", $data);
         }
-        redirect("admin/assign/" . $id);
+        redirect("admin/assignadd/" . $id);
 
         // $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         // $data['assigned_user'] = $this->db->get_where('user', ['id' => $id])->row_array();
