@@ -58,9 +58,9 @@
                             <td><?= date('d F Y', $u['date_created']) ?></td>
 
                             <td>
-                                <a href="<?= base_url('admin/assign/') . $u['id']; ?>" class="badge badge-warning">assign</a>
-                                <a href="<?= base_url("admin/edit/") . $u['id'] ?>" class="badge badge-success">edit</a>
-                                <a href="<?= base_url("admin/delete/") . $u['id'] ?>" class="badge badge-danger">delete</a>
+                                <a href="<?= base_url('admin/assign/') . $u['id']; ?>" class="btn btn-primary">Assign</a>
+                                <a href="<?= base_url("admin/edit/") . $u['id'] ?>" class="btn btn-secondary">Edit</a>
+                                <a href="<?= base_url("admin/delete/") . $u['id'] ?>" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                         <?php $i++ ?>

@@ -12,13 +12,16 @@
                         <div class="col-lg">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h1 text-gray-900 mb-4">HRMS</h1>
+                                    <a class="text-primary h1" href="<?= base_url("auth") ?>">
+                                        <i class="fas fa-book"></i>
+                                        HRMS
+                                    </a>
                                     <h1 class="h4 text-gray-900 mb-4">Login Page</h1>
                                 </div>
 
                                 <?= $this->session->flashdata('message') ?>
 
-                                <form class="user" method="POST" action="<?= base_url('auth'); ?>">
+                                <form class="user" method="POST" action="<?= base_url('auth/login'); ?>">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" id="email" name='email' placeholder="Enter Email Address..." value="<?= set_value("email"); ?>">
                                         <!-- check input error -->
