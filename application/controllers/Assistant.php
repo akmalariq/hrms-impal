@@ -31,7 +31,7 @@ class Assistant extends CI_Controller
         $id = $this->session->userdata('id');
         $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array();
 
-        $this->db->select('user.id as id, name, sid, class, role, course, modul, modul.date, attend');
+        $this->db->select('user.id as id, schedule.id as schedule_id, name, sid, class, role, course, modul, modul_id, modul.date, attend');
         $this->db->from('user');
         $this->db->join('schedule', 'user.id = schedule.user_id');
         $this->db->join('user_role', 'schedule.role_id = user_role.id');
@@ -42,7 +42,6 @@ class Assistant extends CI_Controller
         $this->db->order_by("date", "ASC");
         $this->db->order_by("modul_id", "ASC");
         $data['schedule'] = $this->db->get()->result_array();
-
         $querySchedule = "SELECT    COUNT(attend) AS attend
                             FROM    schedule
                            WHERE    user_id = $id
@@ -72,5 +71,63 @@ class Assistant extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('assistant/finance', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function validateattendance($modul_id)
+    {
+
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+
+        $this->db->select('course, modul');
+        $this->db->from('modul');
+        $this->db->join('course', 'course.id = modul.course_id');
+        $this->db->where('modul.id', $modul_id);
+        $data['modul'] = $this->db->get()->row_array();
+
+        $data['title'] = "Validate Attendance";
+
+        $keyword = $this->input->post('keyword');
+        if (!$keyword) {
+            $this->db->select('name, sid, class, modul.date, attend, schedule.id as schedule_id, schedule.modul_id as modul_id ');
+            $this->db->from('user');
+            $this->db->join('schedule', 'user.id = schedule.user_id');
+            $this->db->join('user_role', 'schedule.role_id = user_role.id');
+            $this->db->join('modul', 'schedule.modul_id = modul.id');
+            $this->db->join('course', 'modul.course_id = course.id');
+            $this->db->where('schedule.modul_id', $modul_id);
+            $this->db->where('schedule.role_id', 2);
+            $data['schedule'] = $this->db->get()->result_array();
+        } else {
+            $this->db->select('name, sid, class, modul.date, attend, schedule.id as schedule_id, schedule.modul_id as modul_id ');
+            $this->db->from('user');
+            $this->db->join('schedule', 'user.id = schedule.user_id');
+            $this->db->join('user_role', 'schedule.role_id = user_role.id');
+            $this->db->join('modul', 'schedule.modul_id = modul.id');
+            $this->db->join('course', 'modul.course_id = course.id');
+            $this->db->where('schedule.modul_id', $modul_id);
+            $this->db->where('schedule.role_id', 2);
+            $this->db->like('name', $keyword);
+            $this->db->or_like('sid', $keyword);
+            $this->db->or_like('class', $keyword);
+            $data['schedule'] = $this->db->get()->result_array();
+        }
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('assistant/validateattendance', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function attend($schedule_id, $modul_id, $attend)
+    {
+        if ($attend) {
+            $this->db->where('id', $schedule_id);
+            $this->db->update('schedule', array('attend' => 0));
+        } else {
+            $this->db->where('id', $schedule_id);
+            $this->db->update('schedule', array('attend' => 1));
+        }
+        redirect("assistant/validateattendance/" . $modul_id);
     }
 }

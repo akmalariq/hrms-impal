@@ -30,7 +30,7 @@
                     <?= $s['course'] ?>
                 </h4>
                 <div class="float-right">
-                    <a class="btn btn-primary" href="<?= base_url('assistant/attendance/') . $s['id'] ?>">
+                    <a class="btn btn-primary" href="<?= base_url('assistant/validateattendance/') . $s['modul_id'] ?>">
                         <i class="fas fa-fw fa-user-check"></i>
                         Validate Attendance
                     </a>
