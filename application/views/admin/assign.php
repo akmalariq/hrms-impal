@@ -9,37 +9,41 @@
             <?= $this->session->flashdata('message'); ?>
 
             <h5>Name : <?= $assigned_user['name'] ?></h5>
-            <h5>Role : Student</h5>
+            <div class="float-right mx-4 my-2">
+                <a href="<?= base_url("admin/assignadd/") . $assigned_user['id'] ?>" class="btn btn-primary">Assign</a>
+                <a href="<?= base_url("admin/") ?>" class="btn btn-secondary">Back</a>
+            </div>
 
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Mata Kuliah</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Student ID</th>
+                        <th scope="col">Class</th>
                         <th scope="col">Role</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">Modul</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Attendance</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1 ?>
-                    <?php foreach ($mata_kuliah as $m) : ?>
-
+                    <?php foreach ($schedule as $s) : ?>
                         <tr>
                             <th scope="row"><?= $i ?></th>
-                            <td><?= $m['mata_kuliah']; ?></td>
-                            <td>
-                                <?php
-                                if (count($assigned) >= $m['id']) {
-                                    echo $assigned[$m['id'] - 1]['role'];
-                                } else {
-                                    echo "-";
-                                }
-                                ?>
-                            </td>
-                            <td>
-                                <a href="<?= base_url('admin/assign/') . $assigned['user_assign.id']; ?>" class="badge badge-warning">assign</a>
-                            </td>
-                            <?php $i++ ?>
+
+                            <td><?= $s['name'] ?></td>
+                            <td><?= $s['sid'] ?></td>
+                            <td><?= $s['class'] ?></td>
+                            <td><?= $s['role'] ?></td>
+                            <td><?= $s['course'] ?></td>
+                            <td><?= $s['modul'] ?></td>
+                            <td><?= date('d F Y', $s['date']) ?></td>
+                            <td><?= $s['attend'] ?></td>
                         </tr>
+                        <?php $i++ ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>

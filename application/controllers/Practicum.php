@@ -28,8 +28,20 @@ class Practicum extends CI_Controller
 
     public function index()
     {
-        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $id = $this->session->userdata('id');
+        $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array();
 
+        $this->db->select('user.id as id, name, sid, class, role, course, modul, modul.date, attend');
+        $this->db->from('user');
+        $this->db->join('schedule', 'user.id = schedule.user_id');
+        $this->db->join('user_role', 'schedule.role_id = user_role.id');
+        $this->db->join('modul', 'schedule.modul_id = modul.id');
+        $this->db->join('course', 'modul.course_id = course.id');
+        $this->db->where('user_id', $id);
+        $this->db->where('schedule.role_id', 2);
+        $this->db->order_by("date", "ASC");
+        $this->db->order_by("modul_id", "ASC");
+        $data['schedule'] = $this->db->get()->result_array();
 
         $data['title'] = "Schedule";
 

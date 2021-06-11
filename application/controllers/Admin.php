@@ -188,18 +188,17 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         $data['assigned_user'] = $this->db->get_where('user', ['id' => $id])->row_array();
 
-        $data['title'] = "Assign Class";
-
-        $this->db->select('user_assign.id AS assign_id, mata_kuliah_id, role');
-        $this->db->from('user_assign');
-        $this->db->join('user_role', 'user_role.id = user_assign.role_id');
+        $this->db->select('name, sid, class, role, course, modul, modul.date, attend');
+        $this->db->from('user');
+        $this->db->join('schedule', 'user.id = schedule.user_id');
+        $this->db->join('user_role', 'schedule.role_id = user_role.id');
+        $this->db->join('modul', 'schedule.modul_id = modul.id');
+        $this->db->join('course', 'modul.course_id = course.id');
         $this->db->where('user_id', $id);
-        $this->db->order_by("mata_kuliah_id", "ASC");
-        $data['assigned'] = $this->db->get()->result_array();
+        $this->db->order_by("date", "ASC");
+        $data['schedule'] = $this->db->get()->result_array();
 
-
-        $data['mata_kuliah'] = $this->db->get('practicum_mata_kuliah')->result_array();
-        // $data['menu'] = $this->db->get('user_menu')->result_array();
+        $data['title'] = "Assign Class";
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -208,13 +207,152 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function assignadd()
+    public function assignadd($id)
+    // masih banyak error cek lagi
     {
 
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
-        // $data['assigned_user'] = $this->db->get_where('user', ['id' => $id])->row_array();
+        $data['assigned_user'] = $this->db->get_where('user', ['id' => $id])->row_array();
+        $data['course'] = $this->db->get('course')->result_array();
 
         $data['title'] = "Assign Class";
+
+        $this->db->select('name, sid, class, role, course, modul, modul.date, attend');
+        $this->db->from('user');
+        $this->db->join('schedule', 'user.id = schedule.user_id');
+        $this->db->join('user_role', 'schedule.role_id = user_role.id');
+        $this->db->join('modul', 'schedule.modul_id = modul.id');
+        $this->db->join('course', 'modul.course_id = course.id');
+        $this->db->where('user_id', $id);
+        $this->db->order_by("date", "ASC");
+        $data['schedule'] = $this->db->get()->result_array();
+
+
+        // $data['mata_kuliah'] = $this->db->get('practicum_mata_kuliah')->result_array();
+        // // $data['menu'] = $this->db->get('user_menu')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/assignadd', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function addcourse($id, $course_id, $role_id)
+    // masih banyak error cek lagi
+    {
+        // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">' . 'id = ' . $id . ' course = ' .  $course . ' Success</div>');
+        // redirect('admin/assignadd/' . $id);
+
+        // $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $modul = $this->db->get_where('modul', ['course_id' => $course_id])->result_array();
+
+        foreach ($modul as $m) {
+            $data = [
+                'user_id' => $id,
+                'role_id' => $role_id,
+                'modul_id' => $m['id'],
+                'attend' => 0
+            ];
+            $this->db->insert("schedule", $data);
+        }
+        redirect("admin/assignadd/" . $id);
+    }
+
+    public function deletecourse($id, $role_id, $course_id)
+    // masih banyak error cek lagi
+    {
+        $modul = $this->db->get_where('modul', ['course_id' => $course_id])->result_array();
+
+        foreach ($modul as $m) {
+            $data = [
+                'modul_id' => $m['id'],
+                'role_id' => $role_id
+            ];
+            $this->db->delete("schedule", $data);
+        }
+        redirect("admin/assignadd/" . $id);
+
+        // $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        // $data['assigned_user'] = $this->db->get_where('user', ['id' => $id])->row_array();
+        // $data['schedule'] = $this->db->get_where('schedule', ['user_id' => $id])->result_array();
+        // $data['modul'] = $this->db->get('modul')->result_array();
+        // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">hello</div>');
+
+        // $data['title'] = "Assign Class";
+
+        // // $this->db->select('mata_kuliah_id, role');
+        // // $this->db->from('user_assign');
+        // // $this->db->join('user_role', 'user_role.id = user_assign.role_id');
+        // // $this->db->where('user_id', $id);
+        // // $this->db->order_by("mata_kuliah_id", "ASC");
+        // // $data['assigned'] = $this->db->get()->result_array();
+
+
+        // // $data['mata_kuliah'] = $this->db->get('practicum_mata_kuliah')->result_array();
+        // // // $data['menu'] = $this->db->get('user_menu')->result_array();
+
+        // $this->load->view('templates/header', $data);
+        // $this->load->view('templates/sidebar', $data);
+        // $this->load->view('templates/topbar', $data);
+        // $this->load->view('admin/assignadd', $data);
+        // $this->load->view('templates/footer');
+    }
+
+    public function announcementsedit($id)
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $data['announcements'] = $this->db->get_where('announcements', ['id' => $id])->row_array();
+
+        // Sets rules from form validation (Check the inputs if valid)
+
+        // Checks if form_validation has not run, shows login page. Else get input form
+        if ($this->input->post('title', true) == false) {
+
+            $data['title'] = "Announcements Edit";
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/announcementsedit', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $newdata = [
+                // title is filtered through XSS filter and htmlspecialchars
+                'title' => htmlspecialchars($this->input->post('title', true)),
+
+                // announcement is filtered through XSS filter and htmlspecialchars
+                'announcement' => htmlspecialchars($this->input->post('announcement', true)),
+
+                'date_created' => time()
+            ];
+
+            $this->db->where('id', $data['announcements']['id']);
+            $this->db->update('announcements', $newdata);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Announcement has been updated</div>');
+            redirect('practicum/announcements');
+        }
+    }
+
+    public function announcementsdelete($id)
+    {
+        $this->db->delete('announcements', array('id' => $id));
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User has been deleted</div>');
+        redirect("practicum/announcements");
+    }
+
+    public function schedule()
+    // masih banyak error cek lagi
+    {
+
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $data['schedule'] = $this->db->get_where('schedule', ['user_id' => 1])->result_array();
+        // $data['assistant_schedule'] = $this->db->get('assistant_schedule')->result_array();
+        // $data['course'] = $this->db->get('course')->result_array();
+        // $data['modul'] = $this->db->get('modul')->result_array();
+        // $data['assigned_user'] = $this->db->get_where('user', ['id' => $id])->row_array();
+
+        $data['title'] = "Schedule";
 
         // $this->db->select('mata_kuliah_id, role');
         // $this->db->from('user_assign');
@@ -230,7 +368,38 @@ class Admin extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/assignadd', $data);
+        $this->load->view('admin/schedule', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function addschedule()
+    // masih banyak error cek lagi
+    {
+
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        // $data['schedule'] = $this->db->get_where('schedule', ['user_id' => 1])->result_array();
+        // $data['assistant_schedule'] = $this->db->get('assistant_schedule')->result_array();
+        // $data['course'] = $this->db->get('course')->result_array();
+        // $data['modul'] = $this->db->get('modul')->result_array();
+        // $data['assigned_user'] = $this->db->get_where('user', ['id' => $id])->row_array();
+
+        $data['title'] = "Add Schedule";
+
+        // $this->db->select('mata_kuliah_id, role');
+        // $this->db->from('user_assign');
+        // $this->db->join('user_role', 'user_role.id = user_assign.role_id');
+        // $this->db->where('user_id', $id);
+        // $this->db->order_by("mata_kuliah_id", "ASC");
+        // $data['assigned'] = $this->db->get()->result_array();
+
+
+        // $data['mata_kuliah'] = $this->db->get('practicum_mata_kuliah')->result_array();
+        // // $data['menu'] = $this->db->get('user_menu')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/addschedule', $data);
         $this->load->view('templates/footer');
     }
 }
