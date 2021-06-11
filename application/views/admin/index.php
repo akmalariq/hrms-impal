@@ -38,29 +38,15 @@
                             <th scope="row"><?= $i ?></th>
 
                             <td><?= $u['name']; ?></td>
-
                             <td><?= $u['email']; ?></td>
-
                             <td><?= $u['sid']; ?></td>
-
                             <td><?= $u['class']; ?></td>
-
-                            <td>
-                                <?php
-                                $j = 0;
-                                while ($u['role_id'] !=  $user_role[$j]['id']) {
-                                    $j++;
-                                }
-                                echo $user_role[$j]['role'];
-                                ?>
-                            </td>
-
+                            <td><?= $u['role']; ?></td>
                             <td><?= date('d F Y', $u['date_created']) ?></td>
-
                             <td>
-                                <a href="<?= base_url('admin/assign/') . $u['id']; ?>" class="btn btn-primary">Assign</a>
-                                <a href="<?= base_url("admin/edit/") . $u['id'] ?>" class="btn btn-secondary">Edit</a>
-                                <a href="<?= base_url("admin/delete/") . $u['id'] ?>" class="btn btn-danger">Delete</a>
+                                <a href="<?= base_url('admin/assign_user/') . $u['id']; ?>" class="btn btn-primary">Schedule</a>
+                                <a href="<?= base_url("admin/edit_user/") . $u['id'] ?>" class="btn btn-secondary">Edit</a>
+                                <a href="<?= base_url("admin/delete_user/") . $u['id'] ?>" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                         <?php $i++ ?>

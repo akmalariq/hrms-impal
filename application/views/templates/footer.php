@@ -54,14 +54,14 @@
         const roleId = $(this).data('role');
 
         $.ajax({
-            url: "<?= base_url('admin/changeaccess'); ?>",
+            url: "<?= base_url('admin/change_access'); ?>",
             type: 'post',
             data: {
                 menuId: menuId,
                 roleId: roleId
             },
             success: function() {
-                document.location.href = "<?= base_url('admin/roleaccess/'); ?>" + roleId;
+                document.location.href = "<?= base_url('admin/role_access/'); ?>" + roleId;
             }
         });
     });

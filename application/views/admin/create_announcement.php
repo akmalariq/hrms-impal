@@ -10,11 +10,15 @@
                 <div class=" form-group">
                     <label for="title">Title:</label>
                     <input type="text" class="form-control form-control-user" id="title" name="title">
+                    <!-- check input error -->
+                    <?= form_error('title', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
                     <label for="announcement">Announcement:</label>
                     <textarea class="form-control" id="announcement" rows="5" name="announcement"></textarea>
+                    <!-- check input error -->
+                    <?= form_error('announcement', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <button type="submit" class="btn btn-primary">

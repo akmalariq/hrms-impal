@@ -6,16 +6,16 @@
         <div class="col-lg">
             <?= $this->session->flashdata('message'); ?>
             <h4>Name : <?= $assigned_user['name'] ?></h4>
+            <h4>Student ID : <?= $assigned_user['sid'] ?></h4>
             <?php
             // echo var_export($course);
             // die;
             ?>
 
             <div class="float-right mx-4 my-2">
-                <a href="<?= base_url("admin/assign/") . $assigned_user['id'] ?>" class="btn btn-secondary">Back</a>
+                <a href="<?= base_url("admin/assign_user/") . $assigned_user['id'] ?>" class="btn btn-secondary">Back</a>
             </div>
 
-            <h5>Student</h5>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -61,18 +61,18 @@
                                     ?>
                                     <?php if ($student || $assistant) : ?>
                                         <?php if ($student && $assistant) : ?>
-                                            <a href="<?= base_url("admin/deletecourse/") . $assigned_user['id'] . "/" . 2 . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-danger">Student</a>
-                                            <a href="<?= base_url("admin/deletecourse/") . $assigned_user['id'] . "/" . 3 . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-danger">Assistant</a>
+                                            <a href="<?= base_url("admin/delete_course/") . $assigned_user['id'] . "/" . 2 . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-danger">Student</a>
+                                            <a href="<?= base_url("admin/delete_course/") . $assigned_user['id'] . "/" . 3 . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-danger">Assistant</a>
                                         <?php elseif ($student) : ?>
-                                            <a href="<?= base_url("admin/deletecourse/") . $assigned_user['id'] . "/" . 2 . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-danger">Student</a>
-                                            <a href="<?= base_url("admin/addcourse/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-success">Assistant</a>
+                                            <a href="<?= base_url("admin/delete_course/") . $assigned_user['id'] . "/" . 2 . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-danger">Student</a>
+                                            <a href="<?= base_url("admin/add_course/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-success">Assistant</a>
                                         <?php elseif ($assistant) : ?>
-                                            <a href="<?= base_url("admin/addcourse/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-success">Student</a>
-                                            <a href="<?= base_url("admin/deletecourse/") . $assigned_user['id'] . "/" . 3 . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-danger">Assistant</a>
+                                            <a href="<?= base_url("admin/add_course/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-success">Student</a>
+                                            <a href="<?= base_url("admin/delete_course/") . $assigned_user['id'] . "/" . 3 . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-danger">Assistant</a>
                                         <?php endif; ?>
                                     <?php else : ?>
-                                        <a href="<?= base_url("admin/addcourse/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-success">Student</a>
-                                        <a href="<?= base_url("admin/addcourse/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-success">Assistant</a>
+                                        <a href="<?= base_url("admin/add_course/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-success">Student</a>
+                                        <a href="<?= base_url("admin/add_course/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-success">Assistant</a>
                                     <?php endif; ?>
                                 <?php else : ?>
                                     <?php
@@ -89,9 +89,9 @@
                                     ?>
 
                                     <?php if ($student) : ?>
-                                        <a href="<?= base_url("admin/deletecourse/") . $assigned_user['id'] . "/" . 2 . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-danger">Delete</a>
+                                        <a href="<?= base_url("admin/delete_course/") . $assigned_user['id'] . "/" . 2 . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-danger">Delete</a>
                                     <?php else : ?>
-                                        <a href="<?= base_url("admin/addcourse/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-success">Assign</a>
+                                        <a href="<?= base_url("admin/add_course/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 2 ?>" class="btn btn-success">Assign</a>
                                     <?php endif; ?>
                                 <?php endif; ?>
                             </td>
@@ -101,35 +101,6 @@
                 </tbody>
             </table>
 
-            <h5>Assistant</h5>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Course</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1 ?>
-                    <?php foreach ($course as $c) : ?>
-                        <tr>
-                            <th scope="row"><?= $i ?></th>
-
-                            <td><?= $c['course']; ?></td>
-                            <td>
-                                <?php $found = array_search($c['id'], array_column($schedule, 'id')); ?>
-                                <?php if ($found === 0 || $found) : ?>
-                                    <a href="<?= base_url("admin/deletecourse/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-danger">Delete</a>
-                                <?php else : ?>
-                                    <a href="<?= base_url("admin/addcourse/") . $assigned_user['id'] . "/" . $c['id'] . "/" . 3 ?>" class="btn btn-success">Add</a>
-                                <?php endif; ?>
-                            </td>
-                        </tr>
-                        <?php $i++ ?>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
         </div>
     </div>
 
