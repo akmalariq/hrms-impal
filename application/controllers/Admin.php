@@ -203,11 +203,15 @@ class Admin extends CI_Controller
     public function role_access()
     {
         $id = $this->session->userdata('id');
-        $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array(); // get this session's credentials
+        $this->db->select('user.id as id, name, sid, class, role');
+        $this->db->from('user');
+        $this->db->join('user_role', 'user.role_id = user_role.id');
+        $this->db->where('user.id', $id);
+        $data['user'] = $this->db->get()->row_array(); // get this session's credentials
 
         $data['title'] = "Role Access"; // add title page
 
-        $data['role'] = $this->db->get('user_role')->row_array(); // get all roles
+        $data['role'] = $this->db->get('user_role')->result_array(); // get all roles
 
         // checks if the user is an admin, only admin can change role access of admin
         if ($id != 1) {
@@ -289,6 +293,7 @@ class Admin extends CI_Controller
     public function edit_announcement($announcement_id)
     {
         $id = $this->session->userdata('id');
+
         $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array(); // get this session's credentials
 
         $data['announcements'] = $this->db->get_where('announcements', ['id' => $announcement_id])->row_array(); // get the announcement

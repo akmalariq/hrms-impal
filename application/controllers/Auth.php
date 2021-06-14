@@ -22,28 +22,8 @@ class Auth extends CI_Controller
 
             $data['title'] = "HRMS";
 
-            $this->load->view('auth/landingpage', $data);
+            $this->load->view('auth/landing_page', $data);
         }
-
-        // // Sets rules from form validation
-
-        // // Sets rules for email {trim: to remove trailing whitespace, required: the field cannot be empty, valid_email: checks if the string is a valid email}
-        // $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-        // // Sets rules for password {trim: to remove trailing whitespace, required: the field cannot be empty}
-        // $this->form_validation->set_rules('password', 'Password', 'trim|required');
-
-        // // Checks if form_validation has not run, shows login page. Else run _login funtion
-        // if ($this->form_validation->run() == false) {
-        //     // Title
-        //     $data['title'] = "HRMS";
-
-        //     $this->load->view('templates/auth_header', $data);
-        //     $this->load->view('auth/login');
-        //     $this->load->view('templates/auth_footer');
-        // } else {
-        //     // Validasi Login private function
-        //     $this->_login();
-        // }
     }
 
     public function login()
@@ -120,14 +100,7 @@ class Auth extends CI_Controller
     // Call View Function to show Registration Page from (views/auth/login)
     public function registration()
     {
-        if ($this->session->userdata('email')) {
-            if ($this->session->userdata('role_id') == 1) {
-                redirect('admin');
-            } else {
-                redirect('user');
-            }
-        }
-
+        $data['class'] = $this->db->get("class")->result_array();
         // Sets rules from form validation (Check the inputs if valid)
 
         // Sets rules for name {trim: to remove trailing whitespace, required: the field cannot be empty}
@@ -136,6 +109,11 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
             // Sets unique warning
             'is_unique' => "Email has already been registered"
+        ]);
+        // Sets rules for student id {trim: to remove trailing whitespace, required: the field cannot be empty, is_unique from table: user cols: sid}
+        $this->form_validation->set_rules('sid', 'Student ID', 'required|trim|is_unique[user.sid]', [
+            // Sets unique warning
+            'is_unique' => "Student ID has already been registered"
         ]);
         // Sets rules for password1 {trim: to remove trailing whitespace, required: the field cannot be empty, min_lenth[3]: minimum strings of 3, matches[password2]: password1 needs to match password2}
         $this->form_validation->set_rules('password1', 'Password1', 'required|trim|min_length[3]|matches[password2]', [
@@ -162,14 +140,20 @@ class Auth extends CI_Controller
                 // email is filtered through XSS filter and htmlspecialchars
                 'email' => htmlspecialchars($this->input->post('email', true)),
 
+                // student id is filtered through XSS filter and htmlspecialchars
+                'sid' => htmlspecialchars($this->input->post('sid', true)),
+
+                // class is filtered through XSS filter and htmlspecialchars
+                'class' => htmlspecialchars($this->input->post('class', true)),
+
                 // image use default until until further function is implemented (user can upload their own image)
                 'image' => "default.jpg",
 
                 // password is hashed
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 
-                // role_id is default to 2 for a user to be an admin, it needes to be referred by other admins
-                'role_id' => 2,
+                // role_id is default to 3 (candidate), for a user to be an admin it needes to be referred by other admins
+                'role_id' => 3,
 
                 // is_active is default to 1 (active) until further function is implemented (user can authenticate their own email)
                 'is_active' => 1,
