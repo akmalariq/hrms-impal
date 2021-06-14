@@ -23,6 +23,8 @@ class Assistant extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+
+        // This function checks which role is logged in and has what access
         is_logged_in();
     }
 

@@ -59,7 +59,7 @@ class Admin extends CI_Controller
         // Sets rules for email {trim: to remove trailing whitespace, required: the field cannot be empty, valid_email: checks if the string is a valid email}
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 
-        // Checks if form_validation has not run, shows login page. Else get input form
+        // Checks if form_validation has not run, shows edit user page. Else get input form
         if (!$this->form_validation->run()) {
 
             $data['title'] = "Edit Member"; // add title page
@@ -129,7 +129,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function assign_add($target_id)
+    public function add_assign($target_id)
     {
         $id = $this->session->userdata('id');
         $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array(); // get this session's credentials
@@ -144,7 +144,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/assign_add', $data);
+        $this->load->view('admin/add_assign', $data);
         $this->load->view('templates/footer');
     }
 
@@ -259,7 +259,7 @@ class Admin extends CI_Controller
         // Sets rules for announcement {required: the field cannot be empty}
         $this->form_validation->set_rules('announcement', 'Announcement', 'required');
 
-        // Checks if form_validation has not run, shows login page. Else run _login funtion
+        // Checks if form_validation has not run, shows create announcement page. Else run _login funtion
         if ($this->form_validation->run()) {
             $newdata = [
                 // name is filtered through XSS filter and htmlspecialchars
@@ -286,24 +286,17 @@ class Admin extends CI_Controller
         }
     }
 
-    public function announcementsedit($id)
+    public function edit_announcement($announcement_id)
     {
-        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
-        $data['announcements'] = $this->db->get_where('announcements', ['id' => $id])->row_array();
+        $id = $this->session->userdata('id');
+        $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array(); // get this session's credentials
+
+        $data['announcements'] = $this->db->get_where('announcements', ['id' => $announcement_id])->row_array(); // get the announcement
 
         // Sets rules from form validation (Check the inputs if valid)
 
-        // Checks if form_validation has not run, shows login page. Else get input form
-        if ($this->input->post('title', true) == false) {
-
-            $data['title'] = "Announcements Edit";
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('admin/announcementsedit', $data);
-            $this->load->view('templates/footer');
-        } else {
+        // Checks if there is no input, shows edit announcement page. Else get input form
+        if ($this->input->post()) {
             $newdata = [
                 // title is filtered through XSS filter and htmlspecialchars
                 'title' => htmlspecialchars($this->input->post('title', true)),
@@ -318,10 +311,18 @@ class Admin extends CI_Controller
             $this->db->update('announcements', $newdata);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Announcement has been updated</div>');
             redirect('practicum/announcements');
+        } else {
+            $data['title'] = "Announcements Edit";
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/edit_announcement', $data);
+            $this->load->view('templates/footer');
         }
     }
 
-    public function announcementsdelete($id)
+    public function delete_announcement($id)
     {
         $this->db->delete('announcements', array('id' => $id));
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User has been deleted</div>');
@@ -329,7 +330,6 @@ class Admin extends CI_Controller
     }
 
     public function schedule()
-    // masih banyak error cek lagi
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         $data['schedule'] = $this->db->get_where('schedule', ['user_id' => 1])->result_array();
