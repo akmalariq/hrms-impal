@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2021 at 04:22 AM
+-- Generation Time: Jun 14, 2021 at 07:11 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -39,7 +39,8 @@ CREATE TABLE `announcements` (
 --
 
 INSERT INTO `announcements` (`id`, `title`, `announcement`, `date_created`) VALUES
-(3, 'Lorem ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non vestibulum enim. Maecenas quis diam nisi. Vivamus elementum pellentesque magna, quis lobortis sapien elementum sed. In eu lectus nec elit tristique euismod. Donec sodales justo et tristique porttitor. Pellentesque scelerisque vel lectus quis viverra. Duis finibus leo a nunc tempus, ac bibendum lacus efficitur. Phasellus at ipsum efficitur, venenatis nisl porttitor, bibendum magna. Phasellus id ipsum ut eros tempus tincidunt ac eget tortor.\r\n\r\nAliquam sodales orci ut dolor iaculis dapibus. In sollicitudin et lacus eu blandit. Cras imperdiet magna pretium, suscipit risus ac, feugiat ipsum. Sed eget sagittis massa, luctus eleifend sem. Integer mollis ultrices arcu, a ullamcorper felis volutpat vitae. Mauris posuere, justo vel hendrerit sodales, justo odio dapibus felis, vel luctus elit enim non mauris. Sed eros enim, porta a elit vitae, vestibulum ullamcorper quam. Nulla vulputate dui a risus suscipit aliquam. Proin elementum vestibulum molestie. Curabitur et convallis ipsum, eget consectetur nunc. Vivamus blandit posuere nibh, ut gravida nulla lacinia eget. Proin maximus sollicitudin elit ut pharetra. Praesent vel turpis sodales velit lobortis blandit. Suspendisse commodo consequat dui non porttitor.\r\n\r\nSuspendisse eu lacus cursus libero tempor gravida et at dui. Ut in dui dui. Mauris aliquet at dui ut vehicula. Nullam aliquam, neque quis tincidunt cursus, velit velit fringilla neque, nec maximus mauris elit et lacus. Pellentesque cursus ultricies nulla vitae lobortis. Nam condimentum diam ac justo sollicitudin, eleifend tristique enim pellentesque. Phasellus et tempor orci. Cras aliquam eros et metus lacinia, nec laoreet urna euismod. Ut pretium, justo in accumsan eleifend, ante ligula faucibus elit, eu rutrum urna dolor lacinia magna. Phasellus dolor ligula, ultricies a arcu vel, euismod vestibulum diam. Ut condimentum elit tempor malesuada rutrum. Donec accumsan sapien eget porta congue. Vivamus tellus ipsum, condimentum in finibus id, vulputate viverra eros. Aliquam erat volutpat. Integer non risus nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\r\n\r\nSed a lacus nec tortor consectetur semper id vel odio. Cras sed justo consectetur, convallis metus a, varius leo. Donec erat justo, sollicitudin in lorem interdum, venenatis condimentum nunc. Mauris posuere hendrerit justo. Integer dignissim at libero eget dictum. Sed vulputate est in mi gravida iaculis vitae sagittis nisl. Duis in gravida ex. Suspendisse sollicitudin eu nisi ac pulvinar. Sed a dignissim turpis. Donec sit amet egestas diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse vulputate vulputate neque ut feugiat. Sed quis sem orci. Nullam ut luctus sapien, ac laoreet turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ac velit eget metus egestas rhoncus.\r\n\r\nIn hac habitasse platea dictumst. Vivamus dignissim vehicula nisi, nec malesuada arcu sollicitudin eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque facilisis lorem in nisl ultrices sollicitudin. Etiam elementum scelerisque volutpat. Nam id est euismod enim interdum imperdiet. Donec efficitur urna mattis ornare suscipit. Aenean viverra lorem id viverra condimentum. Proin a sem at velit commodo bibendum id eu magna. Suspendisse sagittis felis ante, vitae scelerisque mauris iaculis ac. Proin sed dolor convallis, convallis magna vitae, aliquam turpis. Integer sed massa orci.', 1623122796);
+(3, 'Lorem ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non vestibulum enim. Maecenas quis diam nisi. Vivamus elementum pellentesque magna, quis lobortis sapien elementum sed. In eu lectus nec elit tristique euismod. Donec sodales justo et tristique porttitor. Pellentesque scelerisque vel lectus quis viverra. Duis finibus leo a nunc tempus, ac bibendum lacus efficitur. Phasellus at ipsum efficitur, venenatis nisl porttitor, bibendum magna. Phasellus id ipsum ut eros tempus tincidunt ac eget tortor.\r\n\r\nAliquam sodales orci ut dolor iaculis dapibus. In sollicitudin et lacus eu blandit. Cras imperdiet magna pretium, suscipit risus ac, feugiat ipsum. Sed eget sagittis massa, luctus eleifend sem. Integer mollis ultrices arcu, a ullamcorper felis volutpat vitae. Mauris posuere, justo vel hendrerit sodales, justo odio dapibus felis, vel luctus elit enim non mauris. Sed eros enim, porta a elit vitae, vestibulum ullamcorper quam. Nulla vulputate dui a risus suscipit aliquam. Proin elementum vestibulum molestie. Curabitur et convallis ipsum, eget consectetur nunc. Vivamus blandit posuere nibh, ut gravida nulla lacinia eget. Proin maximus sollicitudin elit ut pharetra. Praesent vel turpis sodales velit lobortis blandit. Suspendisse commodo consequat dui non porttitor.\r\n\r\nSuspendisse eu lacus cursus libero tempor gravida et at dui. Ut in dui dui. Mauris aliquet at dui ut vehicula. Nullam aliquam, neque quis tincidunt cursus, velit velit fringilla neque, nec maximus mauris elit et lacus. Pellentesque cursus ultricies nulla vitae lobortis. Nam condimentum diam ac justo sollicitudin, eleifend tristique enim pellentesque. Phasellus et tempor orci. Cras aliquam eros et metus lacinia, nec laoreet urna euismod. Ut pretium, justo in accumsan eleifend, ante ligula faucibus elit, eu rutrum urna dolor lacinia magna. Phasellus dolor ligula, ultricies a arcu vel, euismod vestibulum diam. Ut condimentum elit tempor malesuada rutrum. Donec accumsan sapien eget porta congue. Vivamus tellus ipsum, condimentum in finibus id, vulputate viverra eros. Aliquam erat volutpat. Integer non risus nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\r\n\r\nSed a lacus nec tortor consectetur semper id vel odio. Cras sed justo consectetur, convallis metus a, varius leo. Donec erat justo, sollicitudin in lorem interdum, venenatis condimentum nunc. Mauris posuere hendrerit justo. Integer dignissim at libero eget dictum. Sed vulputate est in mi gravida iaculis vitae sagittis nisl. Duis in gravida ex. Suspendisse sollicitudin eu nisi ac pulvinar. Sed a dignissim turpis. Donec sit amet egestas diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse vulputate vulputate neque ut feugiat. Sed quis sem orci. Nullam ut luctus sapien, ac laoreet turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ac velit eget metus egestas rhoncus.\r\n\r\nIn hac habitasse platea dictumst. Vivamus dignissim vehicula nisi, nec malesuada arcu sollicitudin eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque facilisis lorem in nisl ultrices sollicitudin. Etiam elementum scelerisque volutpat. Nam id est euismod enim interdum imperdiet. Donec efficitur urna mattis ornare suscipit. Aenean viverra lorem id viverra condimentum. Proin a sem at velit commodo bibendum id eu magna. Suspendisse sagittis felis ante, vitae scelerisque mauris iaculis ac. Proin sed dolor convallis, convallis magna vitae, aliquam turpis. Integer sed massa orci.', 1623122796),
+(4, 'Hai', '', 1623612001);
 
 -- --------------------------------------------------------
 
@@ -292,42 +293,18 @@ INSERT INTO `schedule` (`id`, `user_id`, `role_id`, `modul_id`, `complain`, `att
 (373, 2, 3, 22, '', 0),
 (374, 2, 3, 23, '', 0),
 (375, 2, 3, 24, '', 0),
-(388, 5, 2, 13, '', 1),
-(389, 5, 2, 14, '', 0),
-(390, 5, 2, 15, '', 0),
-(391, 5, 2, 16, '', 0),
-(392, 5, 2, 17, '', 0),
-(393, 5, 2, 18, '', 0),
-(394, 5, 2, 19, '', 0),
-(395, 5, 2, 20, '', 0),
-(396, 5, 2, 21, '', 0),
-(397, 5, 2, 22, '', 0),
-(398, 5, 2, 23, '', 0),
-(399, 5, 2, 24, '', 0),
-(448, 6, 2, 13, '', 0),
-(449, 6, 2, 14, '', 0),
-(450, 6, 2, 15, '', 0),
-(451, 6, 2, 16, '', 0),
-(452, 6, 2, 17, '', 0),
-(453, 6, 2, 18, '', 0),
-(454, 6, 2, 19, '', 0),
-(455, 6, 2, 20, '', 0),
-(456, 6, 2, 21, '', 0),
-(457, 6, 2, 22, '', 0),
-(458, 6, 2, 23, '', 0),
-(459, 6, 2, 24, '', 0),
-(460, 1, 2, 13, '', 0),
-(461, 1, 2, 14, '', 0),
-(462, 1, 2, 15, '', 0),
-(463, 1, 2, 16, '', 0),
-(464, 1, 2, 17, '', 0),
-(465, 1, 2, 18, '', 0),
-(466, 1, 2, 19, '', 0),
-(467, 1, 2, 20, '', 0),
-(468, 1, 2, 21, '', 0),
-(469, 1, 2, 22, '', 0),
-(470, 1, 2, 23, '', 0),
-(471, 1, 2, 24, '', 0);
+(496, 1, 2, 13, '', 1),
+(497, 1, 2, 14, '', 0),
+(498, 1, 2, 15, '', 0),
+(499, 1, 2, 16, '', 0),
+(500, 1, 2, 17, '', 0),
+(501, 1, 2, 18, '', 0),
+(502, 1, 2, 19, '', 0),
+(503, 1, 2, 20, '', 0),
+(504, 1, 2, 21, '', 0),
+(505, 1, 2, 22, '', 0),
+(506, 1, 2, 23, '', 0),
+(507, 1, 2, 24, '', 0);
 
 -- --------------------------------------------------------
 
@@ -454,7 +431,8 @@ INSERT INTO `user` (`id`, `name`, `email`, `sid`, `class`, `image`, `password`, 
 (99, 'Dr. Brown Cummerata', 'elda10@predoviclemke.com', '1301170098', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
 (100, 'Tillman Keeling III', 'gabbott@aufderhar.com', '1301170099', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
 (102, 'john', 'john@john.john', '1301170100', 'IF-41-INT', 'default.jpg', '$2y$10$oo0rkfHkTTtK9DiAdjtOEumAcdb5J.YvbKgqpWXNHsc0WodC8QWv6', 3, 1, 1622438723),
-(103, 'angel angel', 'angel@angel.angel', '1301170101', 'IF-41-INT', 'default.jpg', '$2y$10$Lz5cbzql205CFceRTbc0VeSsk4cqL2R.8Gk25D228Uy0lyzrjuqqi', 2, 1, 1622453504);
+(103, 'angel angel', 'angel@angel.angel', '1301170101', 'IF-41-INT', 'default.jpg', '$2y$10$Lz5cbzql205CFceRTbc0VeSsk4cqL2R.8Gk25D228Uy0lyzrjuqqi', 2, 1, 1622453504),
+(108, 'zharfan', 'zharfan@zharfan.zharfan', '', '', 'default.jpg', '$2y$10$fC5/osx.dNgeTJdqTl/LEOn2sdvlu.yxPOM3aTTuWWPN4yPSkYDhi', 2, 1, 1623614253);
 
 -- --------------------------------------------------------
 
@@ -578,12 +556,12 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (3, 2, 'Edit Profile', 'user/edit', 'fas fa-fw fa-user-edit', 1),
 (4, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-tie', 1),
 (5, 2, 'Change Password', 'user/change_password', 'fas fa-fw fa-lock', 1),
-(6, 1, 'Role Access', 'admin/roleaccess', 'fas fa-fw fa-user-tie', 1),
+(6, 1, 'Role Access', 'admin/role_access', 'fas fa-fw fa-user-tie', 1),
 (7, 4, 'Schedule', 'practicum', 'far fa-fw fa-calendar-alt', 1),
 (8, 3, 'Assistant Schedule', 'assistant', 'far fa-fw fa-calendar-alt', 1),
 (9, 4, 'Announcements', 'practicum/announcements', 'fas fa-fw fa-bullhorn', 1),
 (10, 5, 'Recruitment Phase', 'recruitment', 'fas fa-fw fa-user-plus', 1),
-(13, 1, 'Create Announcements', 'admin/announcements', 'fas fa-fw fa-bullhorn', 1);
+(13, 1, 'Create Announcements', 'admin/create_announcement', 'fas fa-fw fa-bullhorn', 1);
 
 --
 -- Indexes for dumped tables
@@ -663,7 +641,7 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `attendance`
@@ -687,19 +665,19 @@ ALTER TABLE `modul`
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=484;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=508;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `user_assign`
