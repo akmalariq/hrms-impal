@@ -13,8 +13,41 @@ class Auth extends CI_Controller
             } else {
                 redirect('user');
             }
+        } else {
+            $this->db->select('*');
+            $this->db->from('announcements');
+            $this->db->order_by('date_created', 'desc');
+            $data['announcements'] = $this->db->get()->result_array();
+
+
+            $data['title'] = "HRMS";
+
+            $this->load->view('auth/landingpage', $data);
         }
 
+        // // Sets rules from form validation
+
+        // // Sets rules for email {trim: to remove trailing whitespace, required: the field cannot be empty, valid_email: checks if the string is a valid email}
+        // $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        // // Sets rules for password {trim: to remove trailing whitespace, required: the field cannot be empty}
+        // $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+        // // Checks if form_validation has not run, shows login page. Else run _login funtion
+        // if ($this->form_validation->run() == false) {
+        //     // Title
+        //     $data['title'] = "HRMS";
+
+        //     $this->load->view('templates/auth_header', $data);
+        //     $this->load->view('auth/login');
+        //     $this->load->view('templates/auth_footer');
+        // } else {
+        //     // Validasi Login private function
+        //     $this->_login();
+        // }
+    }
+
+    public function login()
+    {
         // Sets rules from form validation
 
         // Sets rules for email {trim: to remove trailing whitespace, required: the field cannot be empty, valid_email: checks if the string is a valid email}
@@ -35,6 +68,7 @@ class Auth extends CI_Controller
             $this->_login();
         }
     }
+
 
     private function _login()
     {
@@ -146,8 +180,8 @@ class Auth extends CI_Controller
             ];
 
             $this->db->insert('user', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Pleas Login </div>');
-            redirect('auth');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login </div>');
+            redirect('auth/login');
         }
     }
 

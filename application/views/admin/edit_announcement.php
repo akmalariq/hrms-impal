@@ -18,7 +18,7 @@
                 <button type="submit" class="btn btn-primary mx-1">
                     Edit
                 </button>
-                <a href="<?= base_url("admin/announcementsdelete/") . $announcements['id'] ?>" class="btn btn-danger mx-1">Delete</a>
+                <a href="<?= base_url("admin/delete_announcement/") . $announcements['id'] ?>" class="btn btn-danger mx-1">Delete</a>
                 <a href="<?= base_url("practicum/announcements") ?>" class="btn btn-warning mx-1">Cancel</a>
 
 

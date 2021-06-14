@@ -26,6 +26,7 @@
                         <option value="1">Administrator</option>
                         <option value="2">Student</option>
                         <option value="3">Practicum Assistant</option>
+                        <option value="4">Candidate</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">

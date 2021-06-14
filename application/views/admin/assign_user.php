@@ -8,9 +8,10 @@
         <div class="col-lg">
             <?= $this->session->flashdata('message'); ?>
 
-            <h5>Name : <?= $assigned_user['name'] ?></h5>
+            <h4>Name : <?= $assigned_user['name'] ?></h4>
+            <h4>Student ID : <?= $assigned_user['sid'] ?></h4>
             <div class="float-right mx-4 my-2">
-                <a href="<?= base_url("admin/assignadd/") . $assigned_user['id'] ?>" class="btn btn-primary">Assign</a>
+                <a href="<?= base_url("admin/add_assign/") . $assigned_user['id'] ?>" class="btn btn-primary">Assign</a>
                 <a href="<?= base_url("admin/") ?>" class="btn btn-secondary">Back</a>
             </div>
 
