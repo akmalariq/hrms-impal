@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Practicum extends CI_Controller
 {
-
     /**
      * Index Page for this controller.
      *
@@ -23,9 +22,12 @@ class Practicum extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+
+        // This function checks which role is logged in and has what access
         is_logged_in();
     }
 
+    ################################# Assistant Schedule #################################
 
     public function index()
     {
@@ -34,6 +36,7 @@ class Practicum extends CI_Controller
 
         $this->db->select('user.id as id, schedule.id as schedule_id, name, sid, class, role, course, modul, modul_id, modul.date, attend');
         $this->db->from('user');
+        $this->db->join('class', 'user.class_id = class.id');
         $this->db->join('schedule', 'user.id = schedule.user_id');
         $this->db->join('user_role', 'schedule.role_id = user_role.id');
         $this->db->join('modul', 'schedule.modul_id = modul.id');
@@ -57,25 +60,6 @@ class Practicum extends CI_Controller
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('assistant/schedule', $data);
-        $this->load->view('templates/footer');
-    }
-
-    public function announcements()
-    {
-        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
-
-        $this->db->select('*');
-        $this->db->from('announcements');
-        $this->db->order_by('date_created', 'desc');
-        $data['announcements'] = $this->db->get()->result_array();
-
-
-        $data['title'] = "Announcements";
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('practicum/announcements', $data);
         $this->load->view('templates/footer');
     }
 
@@ -109,6 +93,7 @@ class Practicum extends CI_Controller
         if (!$keyword) {
             $this->db->select('name, sid, class, modul.date, attend, schedule.id as schedule_id, schedule.modul_id as modul_id ');
             $this->db->from('user');
+            $this->db->join('class', 'user.class_id = class.id');
             $this->db->join('schedule', 'user.id = schedule.user_id');
             $this->db->join('user_role', 'schedule.role_id = user_role.id');
             $this->db->join('modul', 'schedule.modul_id = modul.id');
@@ -119,6 +104,7 @@ class Practicum extends CI_Controller
         } else {
             $this->db->select('name, sid, class, modul.date, attend, schedule.id as schedule_id, schedule.modul_id as modul_id ');
             $this->db->from('user');
+            $this->db->join('class', 'user.class_id = class.id');
             $this->db->join('schedule', 'user.id = schedule.user_id');
             $this->db->join('user_role', 'schedule.role_id = user_role.id');
             $this->db->join('modul', 'schedule.modul_id = modul.id');
@@ -161,6 +147,27 @@ class Practicum extends CI_Controller
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('recruitment/phase', $data);
+        $this->load->view('templates/footer');
+    }
+
+    ################################# Announcement #################################
+
+    public function announcements()
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+
+        $this->db->select('*');
+        $this->db->from('announcements');
+        $this->db->order_by('date_created', 'desc');
+        $data['announcements'] = $this->db->get()->result_array();
+
+
+        $data['title'] = "Announcements";
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('practicum/announcements', $data);
         $this->load->view('templates/footer');
     }
 }

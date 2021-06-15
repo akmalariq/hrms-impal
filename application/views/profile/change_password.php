@@ -4,6 +4,8 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
 
+    <?= $this->session->flashdata('message') ?>
+
     <div class="row">
         <div class="col-lg-6">
             <form method="post" action="">
@@ -11,6 +13,8 @@
                 <div class=" form-group">
                     <label for="old_password">Old Password:</label>
                     <input type="password" class="form-control form-control-user" id="old_password" name="old_password">
+                    <!-- check input error -->
+                    <?= form_error('old_password', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <label for="new_password">New Password:</label>
                 <div class="form-group row">

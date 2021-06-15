@@ -21,6 +21,7 @@
                                 <!-- check input error -->
                                 <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
+
                             <!-- Email -->
                             <label for="email">Email:</label>
                             <div class="form-group">
@@ -28,6 +29,7 @@
                                 <!-- check input error -->
                                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
+
                             <!-- Student ID -->
                             <label for="sid">Student ID:</label>
                             <div class=" form-group">
@@ -35,15 +37,19 @@
                                 <!-- check input error -->
                                 <?= form_error('sid', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
+
                             <!-- Class -->
                             <div class="form-group">
                                 <label for="class">Class:</label>
                                 <select class="form-control" id="class" name="class">
+                                    <option value="">Please Select Class</option>
                                     <?php foreach ($class as $c) : ?>
                                         <option value="<?= $c['id'] ?>"><?= $c['class'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
+                                <?= form_error('class', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
+
                             <!-- Password -->
                             <label for="password">Password:</label>
                             <div class="form-group row">
@@ -56,6 +62,7 @@
                                     <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
                                 </div>
                             </div>
+
                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Register Account
                             </button>

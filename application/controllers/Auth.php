@@ -3,6 +3,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
+    /**
+     * Index Page for this controller.
+     *
+     * Maps to the following URL
+     * 		http://example.com/index.php/welcome
+     *	- or -
+     * 		http://example.com/index.php/welcome/index
+     *	- or -
+     * Since this controller is set as the default controller in
+     * config/routes.php, it's displayed at http://example.com/
+     *
+     * So any other public methods not prefixed with an underscore will
+     * map to /index.php/welcome/<method_name>
+     * @see https://codeigniter.com/user_guide/general/urls.html
+     */
 
     // Call View Function to show Login Page
     public function index()
@@ -86,15 +101,15 @@ class Auth extends CI_Controller
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
-                    redirect('auth');
+                    redirect('auth/login');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email has not been activated!</div>');
-                redirect('auth');
+                redirect('auth/login');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
-            redirect('auth');
+            redirect('auth/login');
         }
     }
 
@@ -106,22 +121,31 @@ class Auth extends CI_Controller
 
         // Sets rules for name {trim: to remove trailing whitespace, required: the field cannot be empty}
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
+
         // Sets rules for email {trim: to remove trailing whitespace, required: the field cannot be empty, valid_email: checks if the string is a valid email}
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
             // Sets unique warning
             'is_unique' => "Email has already been registered"
         ]);
+
         // Sets rules for student id {trim: to remove trailing whitespace, required: the field cannot be empty, is_unique from table: user cols: sid}
-        $this->form_validation->set_rules('sid', 'Student ID', 'required|trim|is_unique[user.sid]', [
+        $this->form_validation->set_rules('sid', 'Student ID', 'required|trim|numeric|exact_length[10]|is_unique[user.sid]', [
             // Sets unique warning
-            'is_unique' => "Student ID has already been registered"
+            'numeric' => "Student ID must be numeric",
+            'exact_length' => "Student ID must be 10 digits",
+            'is_unique' => "Student ID has already been registered",
         ]);
+
+        // Sets rules for student id {trim: to remove trailing whitespace, required: the field cannot be empty, is_unique from table: user cols: sid}
+        $this->form_validation->set_rules('class', 'Class', 'required');
+
         // Sets rules for password1 {trim: to remove trailing whitespace, required: the field cannot be empty, min_lenth[3]: minimum strings of 3, matches[password2]: password1 needs to match password2}
         $this->form_validation->set_rules('password1', 'Password1', 'required|trim|min_length[3]|matches[password2]', [
             // Sets unique warning
             'matches' => "Password didn't match!",
             'min_length' => "Password too short!"
         ]);
+
         // Sets rules for password2 {trim: to remove trailing whitespace, required: the field cannot be empty}
         $this->form_validation->set_rules('password2', 'Password2', 'required|trim');
 
