@@ -330,7 +330,7 @@ class Admin extends CI_Controller
     public function delete_announcement($id)
     {
         $this->db->delete('announcements', array('id' => $id));
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User has been deleted</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Announcement has been deleted</div>');
         redirect("practicum/announcements");
     }
 

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User extends CI_Controller
+class Profile extends CI_Controller
 {
 
     /**
@@ -36,7 +36,7 @@ class User extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('user/index', $data);
+        $this->load->view('candidate/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -59,7 +59,7 @@ class User extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('user/edit', $data);
+            $this->load->view('candidate/edit', $data);
             $this->load->view('templates/footer');
         } else {
             $newdata = [
@@ -113,7 +113,7 @@ class User extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('user/change_password', $data);
+            $this->load->view('candidate/change_password', $data);
             $this->load->view('templates/footer');
         } else {
             $password = $this->input->post('old_password');
@@ -142,7 +142,7 @@ class User extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('user/schedule', $data);
+        $this->load->view('candidate/schedule', $data);
         $this->load->view('templates/footer');
     }
 }

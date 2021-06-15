@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
+
     // Call View Function to show Login Page
     public function index()
     {
@@ -11,7 +12,7 @@ class Auth extends CI_Controller
             if ($this->session->userdata('role_id') == 1) {
                 redirect('admin');
             } else {
-                redirect('user');
+                redirect('profile');
             }
         } else {
             $this->db->select('*');
@@ -81,7 +82,7 @@ class Auth extends CI_Controller
                     if ($user['role_id'] == 1) {
                         redirect('admin');
                     } else {
-                        redirect('user');
+                        redirect('profile');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
