@@ -125,11 +125,16 @@ class Admin extends CI_Controller
         $id = $this->session->userdata('id');
         $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array(); // get this session's credentials
 
-        $data['assigned_user'] = $this->db->get_where('user', ['id' => $target_id])->row_array(); // get target user's credentials
+        $this->db->select('user.id AS id, name, sid, class');
+        $this->db->from('user');
+        $this->db->join('class', 'user.class_id = class.id');
+        $this->db->where('user.id', $target_id);
+        $data['assigned_user'] = $this->db->get_where()->row_array(); // get target user's credentials
 
         // get schedule
-        $this->db->select('name, sid, class, role, course, modul, modul.date, attend');
+        $this->db->select('role, course, modul, modul.date, attend');
         $this->db->from('user');
+        $this->db->join('class', 'user.class_id = class.id');
         $this->db->join('schedule', 'user.id = schedule.user_id');
         $this->db->join('user_role', 'schedule.role_id = user_role.id');
         $this->db->join('modul', 'schedule.modul_id = modul.id');

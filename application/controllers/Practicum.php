@@ -182,7 +182,7 @@ class Practicum extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function do_upload()
+    public function do_upload($type)
     {
         $id = $this->session->userdata('id');
         $user = $this->db->get_where('user', ['id' => $id])->row_array(); // get this session's credentials
@@ -192,39 +192,69 @@ class Practicum extends CI_Controller
         // check if directory exist
         if (is_dir('./uploads/' . $dir) === false) {
             mkdir('./uploads/' . $dir); // create directory
+        } else {
         }
 
-        $config['upload_path']          = './uploads/' . $dir;  // path for uploaded file
-        $config['allowed_types']        = 'pdf|docx';           // file types allowed to be uploaded
-        $config['max_size']             = 500;                  // max file size (500 kb)
+        if ($type === 'cv') {
 
-        $this->load->library('upload', $config); // load library with config
+            // CV
+            $config['upload_path']          = './uploads/' . $dir;  // path for uploaded file
+            $config['allowed_types']        = 'pdf|docx';           // file types allowed to be uploaded
+            $config['max_size']             = 500;                  // max file size (500 kb)
+            $config['file_name']            = $dir . '_cv';
 
-        // CV
-        // checks if file has been uploaded
-        if (!$this->upload->do_upload('cv')) {
+            $this->load->library('upload', $config); // load library with config
 
-            // if not show error message
-            $error = $this->upload->display_errors();
-            $this->session->set_flashdata('message_cv', '<div class="alert alert-danger" role="alert">' . $error . '</div>');
-        } else {
+            // checks if file has been uploaded
+            if (!$this->upload->do_upload('cv')) {
 
-            // show success message
-            $this->session->set_flashdata('message_cv', '<div class="alert alert-success" role="alert">CV Upload Successful </div>');
-        }
+                // if not show error message
+                $error = $this->upload->display_errors();
+                $this->session->set_flashdata('message_cv', '<div class="alert alert-danger" role="alert">' . $error . '</div>');
+            } else {
 
-        // Motivation Letter
+                // insert metadata to database
+                $data = [
+                    'user_id'   => $user['id'],
+                    'file_name' => $this->upload->data('file_name'),
+                    'full_path' => $this->upload->data('full_path'),
+                    'file_ext'  => $this->upload->data('file_ext'),
+                    'file_size' => $this->upload->data('file_size'),
+                ];
+                $this->db->insert('document', $data);
 
-        // checks if file has been uploaded
-        if (!$this->upload->do_upload('ml')) {
+                // show success message
+                $this->session->set_flashdata('message_cv', '<div class="alert alert-success" role="alert">CV Upload Successful </div>');
+            }
+        } elseif ($type === 'ml') {
+            // Motivation Letter
+            $config['upload_path']          = './uploads/' . $dir;  // path for uploaded file
+            $config['allowed_types']        = 'pdf|docx';           // file types allowed to be uploaded
+            $config['max_size']             = 500;                  // max file size (500 kb)
+            $config['file_name']            = $dir . '_ml';
 
-            // if not show error message
-            $error = $this->upload->display_errors();
-            $this->session->set_flashdata('message_ml', '<div class="alert alert-danger" role="alert">' . $error . '</div>');
-        } else {
+            $this->load->library('upload', $config); // load library with config
 
-            // show success message
-            $this->session->set_flashdata('message_ml', '<div class="alert alert-success" role="alert">Motivation Letter Upload Successful </div>');
+            // checks if file has been uploaded
+            if (!$this->upload->do_upload('ml')) {
+
+                // if not show error message
+                $error = $this->upload->display_errors();
+                $this->session->set_flashdata('message_ml', '<div class="alert alert-danger" role="alert">' . $error . '</div>');
+            } else {
+
+                // insert metadata to database
+                $data = [
+                    'file_name' => $this->upload->data('file_name'),
+                    'full_path' => $this->upload->data('full_path'),
+                    'file_ext' => $this->upload->data('file_ext'),
+                    'file_size' => $this->upload->data('file_size'),
+                ];
+                $this->db->insert('document', $data);
+
+                // show success message
+                $this->session->set_flashdata('message_ml', '<div class="alert alert-success" role="alert">Motivation Letter Upload Successful </div>');
+            }
         }
 
         redirect('practicum/recruitment');

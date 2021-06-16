@@ -30,7 +30,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <?php echo form_open_multipart('practicum/do_upload'); ?>
+            <?php echo form_open_multipart('practicum/do_upload/cv'); ?>
 
             <!-- Curriculum Vitae -->
 
@@ -42,8 +42,15 @@
 
             <p>File Format CV: Name_StudentID_CV</p>
 
+            <!-- Upload Button -->
+            <input type="submit" value="Upload" />
+
+            </form>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
+
+            <?php echo form_open_multipart('practicum/do_upload/ml'); ?>
 
             <!-- Motivation Letter -->
 
