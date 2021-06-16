@@ -65,23 +65,11 @@
             <label for="cv">Curriculum Vitae:</label>
             <?= $this->session->flashdata('message_cv') ?>
 
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Upload</span>
-                </div>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="cv" name="cv">
-                    <label class="custom-file-label" for="cv">Choose file</label>
-                </div>
+            <div class=" form-group">
+                <input type="file" name="cv" size="20" />
             </div>
 
-            <script>
-                document.querySelector('.custom-file-input').addEventListener('change', function(e) {
-                    var fileName = document.getElementById("myInput").files[0].name;
-                    var nextSibling = e.target.nextElementSibling
-                    nextSibling.innerText = fileName
-                })
-            </script>
+            <?= $this->session->flashdata('message_cv') ?>
 
             <!-- Motivation Letter -->
             <label for="ml">Motivation Letter:</label>
@@ -91,35 +79,13 @@
                 <input type="file" name="ml" size="20" />
             </div>
 
-            <!-- <label for="ml">Curriculum Vitae:</label>
             <?= $this->session->flashdata('message_ml') ?>
 
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Upload</span>
-                </div>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="ml" name="ml">
-                    <label class="custom-file-label" for="ml">Choose file</label>
-                </div>
-            </div>
-
-            <script>
-                document.querySelector('.custom-file-input').addEventListener('change', function(e) {
-                    var fileName = document.getElementById("myInput").files[0].name;
-                    var nextSibling = e.target.nextElementSibling
-                    nextSibling.innerText = fileName
-                })
-            </script> -->
-
-            <input type="submit" value="upload" />
+            <!-- Upload Button -->
+            <input type="submit" value="Upload" />
 
 
             </form>
-
-
-
-
         </div>
     </div>
 

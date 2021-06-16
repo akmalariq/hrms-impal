@@ -317,7 +317,6 @@ class Admin extends CI_Controller
     public function edit_announcement($announcement_id)
     {
         $id = $this->session->userdata('id');
-
         $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array(); // get this session's credentials
 
         $data['announcements'] = $this->db->get_where('announcements', ['id' => $announcement_id])->row_array(); // get the announcement
