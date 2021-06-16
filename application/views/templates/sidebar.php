@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon">
             <i class="fas fa-book"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">HRMS</div>
+        <div class="sidebar-brand-text mx-3 h2">HRMS</div>
     </a>
 
     <!-- Divider -->

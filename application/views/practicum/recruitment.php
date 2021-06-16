@@ -42,6 +42,9 @@
 
             <p>File Format CV: Name_StudentID_CV</p>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
             <!-- Motivation Letter -->
 
             <label for="ml">Motivation Letter:</label>

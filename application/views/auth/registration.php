@@ -13,7 +13,7 @@
                             </a>
                             <h1 class="h4 text-gray-900 mb-4">Create Account!</h1>
                         </div>
-                        <form class="user" method="post" action="<?= base_url('auth/registration'); ?>">
+                        <form class="user" method="post" action="<?= base_url('auth/registration'); ?>" id="registration">
                             <!-- Name -->
                             <label for="name">Name:</label>
                             <div class=" form-group">
@@ -40,14 +40,14 @@
 
                             <!-- Class -->
                             <div class="form-group">
-                                <label for="class">Class:</label>
-                                <select class="form-control" id="class" name="class">
+                                <label for="class_id">Class:</label>
+                                <select class="form-control" id="class_id" name="class_id" form="registration">
                                     <option value="">Please Select Class</option>
                                     <?php foreach ($class as $c) : ?>
                                         <option value="<?= $c['id'] ?>"><?= $c['class'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
-                                <?= form_error('class', '<small class="text-danger pl-3">', '</small>'); ?>
+                                <?= form_error('class_id', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
 
                             <!-- Password -->

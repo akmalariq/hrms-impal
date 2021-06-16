@@ -116,19 +116,21 @@ class Auth extends CI_Controller
     // Call View Function to show Registration Page from (views/auth/login)
     public function registration()
     {
+        // get class table from database
         $data['class'] = $this->db->get("class")->result_array();
+
         // Sets rules from form validation (Check the inputs if valid)
 
-        // Sets rules for name {trim: to remove trailing whitespace, required: the field cannot be empty}
+        // Sets rules for NAME {trim: to remove trailing whitespace, required: the field cannot be empty}
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
 
-        // Sets rules for email {trim: to remove trailing whitespace, required: the field cannot be empty, valid_email: checks if the string is a valid email}
+        // Sets rules for EMAIL {trim: to remove trailing whitespace, required: the field cannot be empty, valid_email: checks if the string is a valid email}
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
             // Sets unique warning
             'is_unique' => "Email has already been registered"
         ]);
 
-        // Sets rules for student id {trim: to remove trailing whitespace, required: the field cannot be empty, is_unique from table: user cols: sid}
+        // Sets rules for STUDENT ID {trim: to remove trailing whitespace, required: the field cannot be empty, is_unique from table: user cols: sid}
         $this->form_validation->set_rules('sid', 'Student ID', 'required|trim|numeric|exact_length[10]|is_unique[user.sid]', [
             // Sets unique warning
             'numeric' => "Student ID must be numeric",
@@ -136,17 +138,17 @@ class Auth extends CI_Controller
             'is_unique' => "Student ID has already been registered",
         ]);
 
-        // Sets rules for student id {trim: to remove trailing whitespace, required: the field cannot be empty, is_unique from table: user cols: sid}
-        $this->form_validation->set_rules('class', 'Class', 'required');
+        // Sets rules for CLASS ID {required: the field cannot be empty}
+        $this->form_validation->set_rules('class_id', 'Class', 'required');
 
-        // Sets rules for password1 {trim: to remove trailing whitespace, required: the field cannot be empty, min_lenth[3]: minimum strings of 3, matches[password2]: password1 needs to match password2}
+        // Sets rules for PASSWORD1 {trim: to remove trailing whitespace, required: the field cannot be empty, min_lenth[3]: minimum strings of 3, matches[password2]: password1 needs to match password2}
         $this->form_validation->set_rules('password1', 'Password1', 'required|trim|min_length[3]|matches[password2]', [
             // Sets unique warning
             'matches' => "Password didn't match!",
             'min_length' => "Password too short!"
         ]);
 
-        // Sets rules for password2 {trim: to remove trailing whitespace, required: the field cannot be empty}
+        // Sets rules for PASSWORD2 {trim: to remove trailing whitespace, required: the field cannot be empty}
         $this->form_validation->set_rules('password2', 'Password2', 'required|trim');
 
         // Checks if form_validation has not run, shows login page. Else get input form
@@ -189,19 +191,22 @@ class Auth extends CI_Controller
 
             ];
 
-            // Token
+            // Random token for email verification
             $token = base64_encode(random_bytes(32));
+
+            // User token
             $user_token = [
                 'email'         => $email,
                 'token'         => $token,
                 'date_created' => time()
             ];
 
-            $this->db->insert('user', $data);
-            $this->db->insert('user_token', $user_token);
+            $this->db->insert('user', $data);               // insert new user
+            $this->db->insert('user_token', $user_token);   // insert new user_token
 
-            $this->_sendemail($token, 'verify');
+            $this->_sendemail($token, 'verify');            // send an email with a link to verify the email is true
 
+            // message to action
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please activate your email </div>');
             redirect('auth/login');
         }
@@ -209,6 +214,7 @@ class Auth extends CI_Controller
 
     private function _sendemail($token, $type)
     {
+        // email sender configuration
         $config = [
             'protocol'  => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -220,15 +226,19 @@ class Auth extends CI_Controller
             'newline'   => "\r\n"
         ];
 
-        $this->email->initialize($config);
+        $this->email->initialize($config); // set the config to codeigniter email library
 
+        // check which mail is wanted to be sent
         if ($type === 'verify') {
+
+            // sends a link to verify email
             $this->email->from('hrms.iflab@gmail.com', 'HRMS IFLAB');
             $this->email->to($this->input->post('email'));
             $this->email->subject('Email Activation');
             $this->email->message('Click this link to verify your account: <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
         }
 
+        // checks if the email is sent, if not print the error
         if ($this->email->send()) {
             return true;
         } else {
@@ -239,34 +249,58 @@ class Auth extends CI_Controller
 
     public function verify()
     {
-        $email = $this->input->get('email');
-        $token = $this->input->get('token');
+        $email = $this->input->get('email'); // get the email from url
+        $token = $this->input->get('token'); // get the token from url
 
+        // get user by email
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        // checks if user exist in database
         if ($user) {
+
+            // get user_token by email
             $user_token = $this->db->get_where('user_token', ['token' => $token])->row_array();
+
+            // checks if user_token exist
             if ($user_token) {
+
+                // checks if the given token has not expired, the time limit is 24 hours
                 if ((time() - $user_token['date_created']) < (60 * 60 * 24)) {
+
+                    // update the is_active column to 1
                     $this->db->set('is_active', 1);
                     $this->db->where('email', $email);
                     $this->db->update('user');
 
+                    // delete the user_token
                     $this->db->delete('user_token', ['email' => $email]);
 
+                    // message to action
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">' . $email . ' has been activated. Please login</div>');
                     redirect('auth/login');
                 } else {
+
+                    // if the token is expired, delete the user and user_token from database
                     $this->db->delete('user', ['email' => $email]);
                     $this->db->delete('user_token', ['email' => $email]);
 
+                    // message to action
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Account activation failed! Token Expired.</div>');
                     redirect('auth/login');
                 }
             } else {
+
+                // if the token is incorrect or did not exist
+
+                // message to action
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Account activation failed! Wrong token.</div>');
                 redirect('auth/login');
             }
         } else {
+
+            // if user (email) is incorrect or did not exist
+
+            // message to action
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Account activation failed! Wrong email.</div>');
             redirect('auth/login');
         }
