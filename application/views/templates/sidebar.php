@@ -2,11 +2,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('profile') ?>">
         <div class="sidebar-brand-icon">
             <i class="fas fa-book"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">HRMS</div>
+        <div class="sidebar-brand-text mx-3 h2">HRMS</div>
     </a>
 
     <!-- Divider -->
@@ -43,7 +43,7 @@
         ?>
 
         <?php foreach ($subMenu as $sm) : ?>
-            <!-- Nav Item - Dashboard -->
+            <!-- Nav Item - Sidebar -->
             <?php if ($title == $sm['title']) : ?>
                 <li class="nav-item active">
                 <?php else : ?>

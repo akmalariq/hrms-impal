@@ -13,18 +13,45 @@
                             </a>
                             <h1 class="h4 text-gray-900 mb-4">Create Account!</h1>
                         </div>
-                        <form class="user" method="post" action="<?= base_url('auth/registration'); ?>">
-
+                        <form class="user" method="post" action="<?= base_url('auth/registration'); ?>" id="registration">
+                            <!-- Name -->
+                            <label for="name">Name:</label>
                             <div class=" form-group">
-                                <input type="name" class="form-control form-control-user" id="name" name="name" placeholder="John Doe" value="<?= set_value("name"); ?>">
+                                <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="John Doe" value="<?= set_value("name"); ?>">
                                 <!-- check input error -->
                                 <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
+
+                            <!-- Email -->
+                            <label for="email">Email:</label>
                             <div class="form-group">
                                 <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Email Address" value="<?= set_value("email"); ?>">
                                 <!-- check input error -->
                                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
+
+                            <!-- Student ID -->
+                            <label for="sid">Student ID:</label>
+                            <div class=" form-group">
+                                <input type="text" class="form-control form-control-user" id="sid" name="sid" placeholder="1301171234" value="<?= set_value("sid"); ?>">
+                                <!-- check input error -->
+                                <?= form_error('sid', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+
+                            <!-- Class -->
+                            <div class="form-group">
+                                <label for="class_id">Class:</label>
+                                <select class="form-control" id="class_id" name="class_id" form="registration">
+                                    <option value="">Please Select Class</option>
+                                    <?php foreach ($class as $c) : ?>
+                                        <option value="<?= $c['id'] ?>"><?= $c['class'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <?= form_error('class_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+
+                            <!-- Password -->
+                            <label for="password">Password:</label>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Password">
@@ -35,6 +62,7 @@
                                     <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
                                 </div>
                             </div>
+
                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Register Account
                             </button>

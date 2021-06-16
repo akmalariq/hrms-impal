@@ -3,6 +3,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin extends CI_Controller
 {
+    /**
+     * Index Page for this controller.
+     *
+     * Maps to the following URL
+     * 		http://example.com/index.php/welcome
+     *	- or -
+     * 		http://example.com/index.php/welcome/index
+     *	- or -
+     * Since this controller is set as the default controller in
+     * config/routes.php, it's displayed at http://example.com/
+     *
+     * So any other public methods not prefixed with an underscore will
+     * map to /index.php/welcome/<method_name>
+     * @see https://codeigniter.com/user_guide/general/urls.html
+     */
 
     public function __construct()
     {
@@ -11,6 +26,8 @@ class Admin extends CI_Controller
         // This function checks which role is logged in and has what access
         is_logged_in();
     }
+
+    ################################# Dashboard #################################
 
     public function index()
     {
@@ -23,6 +40,7 @@ class Admin extends CI_Controller
         if (!$keyword) {
             $this->db->select('user.id AS id, name, email, sid, class, role, date_created');
             $this->db->from('user');
+            $this->db->join('class', 'user.class_id = class.id');
             $this->db->join('user_role', 'user.role_id = user_role.id');
             $data['users'] = $this->db->get()->result_array(); // get all users with their roles
         } else {
@@ -31,6 +49,7 @@ class Admin extends CI_Controller
 
             $this->db->select('user.id AS id, name, email, sid, class, role, date_created');
             $this->db->from('user');
+            $this->db->join('class', 'user.class_id = class.id');
             $this->db->join('user_role', 'user.role_id = user_role.id');
             $this->db->like('name', $keyword);
             $this->db->or_like('email', $keyword);
@@ -106,11 +125,16 @@ class Admin extends CI_Controller
         $id = $this->session->userdata('id');
         $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array(); // get this session's credentials
 
-        $data['assigned_user'] = $this->db->get_where('user', ['id' => $target_id])->row_array(); // get target user's credentials
+        $this->db->select('user.id AS id, name, sid, class');
+        $this->db->from('user');
+        $this->db->join('class', 'user.class_id = class.id');
+        $this->db->where('user.id', $target_id);
+        $data['assigned_user'] = $this->db->get_where()->row_array(); // get target user's credentials
 
         // get schedule
-        $this->db->select('name, sid, class, role, course, modul, modul.date, attend');
+        $this->db->select('role, course, modul, modul.date, attend');
         $this->db->from('user');
+        $this->db->join('class', 'user.class_id = class.id');
         $this->db->join('schedule', 'user.id = schedule.user_id');
         $this->db->join('user_role', 'schedule.role_id = user_role.id');
         $this->db->join('modul', 'schedule.modul_id = modul.id');
@@ -183,6 +207,8 @@ class Admin extends CI_Controller
         redirect("admin/assign_add/" . $id);
     }
 
+    ################################# Role #################################
+
     public function role()
     {
         $id = $this->session->userdata('id');
@@ -203,11 +229,16 @@ class Admin extends CI_Controller
     public function role_access()
     {
         $id = $this->session->userdata('id');
-        $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array(); // get this session's credentials
+        $this->db->select('user.id as id, name, sid, class, role');
+        $this->db->from('user');
+        $this->db->join('class', 'user.class_id = class.id');
+        $this->db->join('user_role', 'user.role_id = user_role.id');
+        $this->db->where('user.id', $id);
+        $data['user'] = $this->db->get()->row_array(); // get this session's credentials
 
         $data['title'] = "Role Access"; // add title page
 
-        $data['role'] = $this->db->get('user_role')->row_array(); // get all roles
+        $data['role'] = $this->db->get('user_role')->result_array(); // get all roles
 
         // checks if the user is an admin, only admin can change role access of admin
         if ($id != 1) {
@@ -246,6 +277,8 @@ class Admin extends CI_Controller
         // gives message to action
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Access Changed!</div>');
     }
+
+    ################################# Announcement #################################
 
     public function create_announcement()
     {
@@ -325,7 +358,7 @@ class Admin extends CI_Controller
     public function delete_announcement($id)
     {
         $this->db->delete('announcements', array('id' => $id));
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User has been deleted</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Announcement has been deleted</div>');
         redirect("practicum/announcements");
     }
 

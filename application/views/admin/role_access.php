@@ -8,17 +8,16 @@
         <div class="col-lg-12">
             <?= $this->session->flashdata('message'); ?>
 
-            <h5>Role : <?= $role['role']; ?></h5>
+            <h5>Role : <?= $user['role']; ?></h5>
 
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Menu</th>
-                        <th scope="col">Administrator</th>
-                        <th scope="col">Student</th>
-                        <th scope="col">Practicum Assistant</th>
-                        <th scope="col">Candidate Practicum Assistant</th>
+                        <?php foreach ($role as $r) : ?>
+                            <th scope="col"><?= $r['role'] ?></th>
+                        <?php endforeach; ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,25 +26,22 @@
                         <tr>
                             <th scope="row"><?= $i ?></th>
                             <td><?= $m['menu']; ?></td>
-
                             <td>
                                 <div class="form-check">
+                                    <!-- Administrator -->
                                     <input class="form-check-input" type="checkbox" <?= check_access(1, $m['id']); ?> data-role="<?= 1; ?>" data-menu="<?= $m['id']; ?>">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check">
+                                    <!-- Practicum Assistant -->
                                     <input class="form-check-input" type="checkbox" <?= check_access(2, $m['id']); ?> data-role="<?= 2; ?>" data-menu="<?= $m['id']; ?>">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check">
+                                    <!-- Candidate -->
                                     <input class="form-check-input" type="checkbox" <?= check_access(3, $m['id']); ?> data-role="<?= 3; ?>" data-menu="<?= $m['id']; ?>">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" <?= check_access(4, $m['id']); ?> data-role="<?= 4; ?>" data-menu="<?= $m['id']; ?>">
                                 </div>
                             </td>
                         </tr>

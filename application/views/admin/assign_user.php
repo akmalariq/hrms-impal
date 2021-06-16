@@ -9,6 +9,7 @@
             <?= $this->session->flashdata('message'); ?>
 
             <h4>Name : <?= $assigned_user['name'] ?></h4>
+            <h4>Class : <?= $assigned_user['class'] ?></h4>
             <h4>Student ID : <?= $assigned_user['sid'] ?></h4>
             <div class="float-right mx-4 my-2">
                 <a href="<?= base_url("admin/add_assign/") . $assigned_user['id'] ?>" class="btn btn-primary">Assign</a>
@@ -19,9 +20,6 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Student ID</th>
-                        <th scope="col">Class</th>
                         <th scope="col">Role</th>
                         <th scope="col">Course</th>
                         <th scope="col">Modul</th>
@@ -35,9 +33,6 @@
                         <tr>
                             <th scope="row"><?= $i ?></th>
 
-                            <td><?= $s['name'] ?></td>
-                            <td><?= $s['sid'] ?></td>
-                            <td><?= $s['class'] ?></td>
                             <td><?= $s['role'] ?></td>
                             <td><?= $s['course'] ?></td>
                             <td><?= $s['modul'] ?></td>

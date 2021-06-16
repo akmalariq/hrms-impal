@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2021 at 07:11 AM
+-- Generation Time: Jun 16, 2021 at 08:12 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -39,8 +39,7 @@ CREATE TABLE `announcements` (
 --
 
 INSERT INTO `announcements` (`id`, `title`, `announcement`, `date_created`) VALUES
-(3, 'Lorem ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non vestibulum enim. Maecenas quis diam nisi. Vivamus elementum pellentesque magna, quis lobortis sapien elementum sed. In eu lectus nec elit tristique euismod. Donec sodales justo et tristique porttitor. Pellentesque scelerisque vel lectus quis viverra. Duis finibus leo a nunc tempus, ac bibendum lacus efficitur. Phasellus at ipsum efficitur, venenatis nisl porttitor, bibendum magna. Phasellus id ipsum ut eros tempus tincidunt ac eget tortor.\r\n\r\nAliquam sodales orci ut dolor iaculis dapibus. In sollicitudin et lacus eu blandit. Cras imperdiet magna pretium, suscipit risus ac, feugiat ipsum. Sed eget sagittis massa, luctus eleifend sem. Integer mollis ultrices arcu, a ullamcorper felis volutpat vitae. Mauris posuere, justo vel hendrerit sodales, justo odio dapibus felis, vel luctus elit enim non mauris. Sed eros enim, porta a elit vitae, vestibulum ullamcorper quam. Nulla vulputate dui a risus suscipit aliquam. Proin elementum vestibulum molestie. Curabitur et convallis ipsum, eget consectetur nunc. Vivamus blandit posuere nibh, ut gravida nulla lacinia eget. Proin maximus sollicitudin elit ut pharetra. Praesent vel turpis sodales velit lobortis blandit. Suspendisse commodo consequat dui non porttitor.\r\n\r\nSuspendisse eu lacus cursus libero tempor gravida et at dui. Ut in dui dui. Mauris aliquet at dui ut vehicula. Nullam aliquam, neque quis tincidunt cursus, velit velit fringilla neque, nec maximus mauris elit et lacus. Pellentesque cursus ultricies nulla vitae lobortis. Nam condimentum diam ac justo sollicitudin, eleifend tristique enim pellentesque. Phasellus et tempor orci. Cras aliquam eros et metus lacinia, nec laoreet urna euismod. Ut pretium, justo in accumsan eleifend, ante ligula faucibus elit, eu rutrum urna dolor lacinia magna. Phasellus dolor ligula, ultricies a arcu vel, euismod vestibulum diam. Ut condimentum elit tempor malesuada rutrum. Donec accumsan sapien eget porta congue. Vivamus tellus ipsum, condimentum in finibus id, vulputate viverra eros. Aliquam erat volutpat. Integer non risus nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\r\n\r\nSed a lacus nec tortor consectetur semper id vel odio. Cras sed justo consectetur, convallis metus a, varius leo. Donec erat justo, sollicitudin in lorem interdum, venenatis condimentum nunc. Mauris posuere hendrerit justo. Integer dignissim at libero eget dictum. Sed vulputate est in mi gravida iaculis vitae sagittis nisl. Duis in gravida ex. Suspendisse sollicitudin eu nisi ac pulvinar. Sed a dignissim turpis. Donec sit amet egestas diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse vulputate vulputate neque ut feugiat. Sed quis sem orci. Nullam ut luctus sapien, ac laoreet turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ac velit eget metus egestas rhoncus.\r\n\r\nIn hac habitasse platea dictumst. Vivamus dignissim vehicula nisi, nec malesuada arcu sollicitudin eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque facilisis lorem in nisl ultrices sollicitudin. Etiam elementum scelerisque volutpat. Nam id est euismod enim interdum imperdiet. Donec efficitur urna mattis ornare suscipit. Aenean viverra lorem id viverra condimentum. Proin a sem at velit commodo bibendum id eu magna. Suspendisse sagittis felis ante, vitae scelerisque mauris iaculis ac. Proin sed dolor convallis, convallis magna vitae, aliquam turpis. Integer sed massa orci.', 1623122796),
-(4, 'Hai', '', 1623612001);
+(3, 'Lorem ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non vestibulum enim. Maecenas quis diam nisi. Vivamus elementum pellentesque magna, quis lobortis sapien elementum sed. In eu lectus nec elit tristique euismod. Donec sodales justo et tristique porttitor. Pellentesque scelerisque vel lectus quis viverra. Duis finibus leo a nunc tempus, ac bibendum lacus efficitur. Phasellus at ipsum efficitur, venenatis nisl porttitor, bibendum magna. Phasellus id ipsum ut eros tempus tincidunt ac eget tortor.\r\n\r\nAliquam sodales orci ut dolor iaculis dapibus. In sollicitudin et lacus eu blandit. Cras imperdiet magna pretium, suscipit risus ac, feugiat ipsum. Sed eget sagittis massa, luctus eleifend sem. Integer mollis ultrices arcu, a ullamcorper felis volutpat vitae. Mauris posuere, justo vel hendrerit sodales, justo odio dapibus felis, vel luctus elit enim non mauris. Sed eros enim, porta a elit vitae, vestibulum ullamcorper quam. Nulla vulputate dui a risus suscipit aliquam. Proin elementum vestibulum molestie. Curabitur et convallis ipsum, eget consectetur nunc. Vivamus blandit posuere nibh, ut gravida nulla lacinia eget. Proin maximus sollicitudin elit ut pharetra. Praesent vel turpis sodales velit lobortis blandit. Suspendisse commodo consequat dui non porttitor.\r\n\r\nSuspendisse eu lacus cursus libero tempor gravida et at dui. Ut in dui dui. Mauris aliquet at dui ut vehicula. Nullam aliquam, neque quis tincidunt cursus, velit velit fringilla neque, nec maximus mauris elit et lacus. Pellentesque cursus ultricies nulla vitae lobortis. Nam condimentum diam ac justo sollicitudin, eleifend tristique enim pellentesque. Phasellus et tempor orci. Cras aliquam eros et metus lacinia, nec laoreet urna euismod. Ut pretium, justo in accumsan eleifend, ante ligula faucibus elit, eu rutrum urna dolor lacinia magna. Phasellus dolor ligula, ultricies a arcu vel, euismod vestibulum diam. Ut condimentum elit tempor malesuada rutrum. Donec accumsan sapien eget porta congue. Vivamus tellus ipsum, condimentum in finibus id, vulputate viverra eros. Aliquam erat volutpat. Integer non risus nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\r\n\r\nSed a lacus nec tortor consectetur semper id vel odio. Cras sed justo consectetur, convallis metus a, varius leo. Donec erat justo, sollicitudin in lorem interdum, venenatis condimentum nunc. Mauris posuere hendrerit justo. Integer dignissim at libero eget dictum. Sed vulputate est in mi gravida iaculis vitae sagittis nisl. Duis in gravida ex. Suspendisse sollicitudin eu nisi ac pulvinar. Sed a dignissim turpis. Donec sit amet egestas diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse vulputate vulputate neque ut feugiat. Sed quis sem orci. Nullam ut luctus sapien, ac laoreet turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ac velit eget metus egestas rhoncus.\r\n\r\nIn hac habitasse platea dictumst. Vivamus dignissim vehicula nisi, nec malesuada arcu sollicitudin eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque facilisis lorem in nisl ultrices sollicitudin. Etiam elementum scelerisque volutpat. Nam id est euismod enim interdum imperdiet. Donec efficitur urna mattis ornare suscipit. Aenean viverra lorem id viverra condimentum. Proin a sem at velit commodo bibendum id eu magna. Suspendisse sagittis felis ante, vitae scelerisque mauris iaculis ac. Proin sed dolor convallis, convallis magna vitae, aliquam turpis. Integer sed massa orci.', 1623122796);
 
 -- --------------------------------------------------------
 
@@ -56,6 +55,36 @@ CREATE TABLE `attendance` (
   `attend` int(11) NOT NULL,
   `complain` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `class`
+--
+
+CREATE TABLE `class` (
+  `id` int(11) NOT NULL,
+  `class` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `class`
+--
+
+INSERT INTO `class` (`id`, `class`) VALUES
+(1, 'IF-41-01'),
+(2, 'IF-41-02'),
+(3, 'IF-41-03'),
+(4, 'IF-41-04'),
+(5, 'IF-41-05'),
+(6, 'IF-41-06'),
+(7, 'IF-41-07'),
+(8, 'IF-41-08'),
+(9, 'IF-41-09'),
+(10, 'IF-41-10'),
+(11, 'IF-41-11'),
+(12, 'IF-41-12'),
+(13, 'IF-41-INT');
 
 -- --------------------------------------------------------
 
@@ -85,6 +114,30 @@ INSERT INTO `course` (`id`, `course`) VALUES
 (10, 'RPL: Desain dan Implementasi'),
 (11, 'Operating System'),
 (12, 'Parallel and Distributed System');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `document`
+--
+
+CREATE TABLE `document` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `file_name` varchar(128) NOT NULL,
+  `full_path` varchar(128) NOT NULL,
+  `file_ext` varchar(8) NOT NULL,
+  `file_size` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `document`
+--
+
+INSERT INTO `document` (`id`, `user_id`, `file_name`, `full_path`, `file_ext`, `file_size`) VALUES
+(6, 1, '1301170000_cv8.pdf', 'C:/xampp/htdocs/github/hrms-impal/uploads/1301170000/1301170000_cv8.pdf', '.pdf', '109.96'),
+(7, 1, '1301170000_cv.pdf', 'C:/xampp/htdocs/github/hrms-impal/uploads/1301170000/1301170000_cv.pdf', '.pdf', '109.96'),
+(8, 0, '1301170000_ml.pdf', 'C:/xampp/htdocs/github/hrms-impal/uploads/1301170000/1301170000_ml.pdf', '.pdf', '109.96');
 
 -- --------------------------------------------------------
 
@@ -317,7 +370,7 @@ CREATE TABLE `user` (
   `name` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
   `sid` char(11) NOT NULL,
-  `class` varchar(128) NOT NULL,
+  `class_id` varchar(128) NOT NULL,
   `image` varchar(128) NOT NULL,
   `password` varchar(256) NOT NULL,
   `role_id` int(1) NOT NULL,
@@ -329,110 +382,14 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `sid`, `class`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(1, 'Akmal Ariq Santoso', 'akmal@akmal.akmal', '1301170000', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 1, 1, 1622087704),
-(2, 'ariq ariq', 'ariq@ariq.ariq', '1301170001', 'IF-42-INT', 'default.jpg', '$2y$10$SaXySmv0QOxyUwEc7xr1D.ZxpJ/MRj/e9RQqo2WygaCuoHg4ae1eC', 3, 1, 1622106366),
-(3, 'adrian', 'adrian@adrian.adrian', '1301170002', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(4, 'anas', 'anas@anas.anas', '1301170003', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 4, 1, 1622106366),
-(5, 'Susanna Brakus II', 'ethompson@gmail.com', '1301170004', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(6, 'Maverick Gerhold', 'abshire.jany@trantow.com', '1301170005', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(7, 'Kendrick Beahan', 'clarissa15@sporer.com', '1301170006', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(8, 'Nelda Greenholt', 'kobe.pagac@wunschankunding.org', '1301170007', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(9, 'Ellen Konopelski', 'marcos.mcclure@bernhard.com', '1301170008', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(10, 'Ewald Marvin IV', 'wunsch.jayce@yahoo.com', '1301170009', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(11, 'Karley Wintheiser II', 'blick.hillary@gmail.com', '1301170010', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(12, 'Marilyne Von', 'aditya.boyer@hotmail.com', '1301170011', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(13, 'Dr. Merlin Conn', 'herminio19@yahoo.com', '1301170012', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(14, 'Prof. Damien Heidenreich PhD', 'hettinger.candace@gaylord.com', '1301170013', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(15, 'Jaylon Hane', 'kling.ardella@gmail.com', '1301170014', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(16, 'Nya Kozey', 'montana.greenholt@yundtsanford.info', '1301170015', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(17, 'Kristoffer Parisian', 'pansy.mccullough@sauerfisher.com', '1301170016', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(18, 'Dr. Vinnie Rath', 'lucienne.feeney@reilly.org', '1301170017', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(19, 'Alexandria Stokes', 'koepp.myriam@yahoo.com', '1301170018', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(20, 'Ms. Eleonore McKenzie I', 'ybosco@gmail.com', '1301170019', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(21, 'Napoleon Klein', 'maria.littel@hotmail.com', '1301170020', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(22, 'Miss Victoria Hane', 'herminio47@ledner.biz', '1301170021', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(23, 'Eve Boyle', 'roma78@gmail.com', '1301170022', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(24, 'Hayden Roberts', 'opal24@gmail.com', '1301170023', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(25, 'Arne Weissnat I', 'tblanda@marquardt.org', '1301170024', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(26, 'Jorge McLaughlin', 'kmraz@lowe.com', '1301170025', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(27, 'Mabel Wisozk', 'breanne38@yahoo.com', '1301170026', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(28, 'Mr. Cody Pagac', 'houston.wiegand@yahoo.com', '1301170027', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(29, 'Candida Johnson', 'gerhold.fletcher@mante.com', '1301170028', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(30, 'Karli Wyman', 'santino.schaden@white.biz', '1301170029', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(31, 'Prof. Claude Pouros III', 'gaylord.roma@gmail.com', '1301170030', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(32, 'Charlie Conroy Sr.', 'hannah.howell@keebler.com', '1301170031', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(33, 'Prof. Roxane Abernathy', 'schulist.margarete@hotmail.com', '1301170032', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(34, 'Misty Effertz', 'krajcik.dominic@beer.info', '1301170033', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(35, 'Skye Larson', 'caroline.heidenreich@kingprice.org', '1301170034', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(36, 'Danny Carter DDS', 'leone.weimann@gmail.com', '1301170035', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(37, 'Helga Ebert MD', 'noelia23@hotmail.com', '1301170036', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(38, 'Miss Kathlyn Ullrich', 'khalid00@emmerich.com', '1301170037', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(39, 'Dr. Christian Jones', 'zrath@hotmail.com', '1301170038', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(40, 'Gillian Labadie IV', 'alvis64@feeney.com', '1301170039', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(41, 'Prof. Fausto Bernhard III', 'kayden41@mueller.com', '1301170040', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(42, 'Fletcher Haley', 'kmiller@hotmail.com', '1301170041', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(43, 'Larry Steuber', 'oberbrunner.percy@ankunding.com', '1301170042', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(44, 'Shayna Armstrong', 'gwilderman@hotmail.com', '1301170043', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(45, 'Raegan Beahan', 'marjorie.wintheiser@stromancrona.com', '1301170044', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(46, 'Malvina Kreiger', 'larson.jimmy@hotmail.com', '1301170045', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(47, 'Sammie Hauck', 'xnicolas@schulistrutherford.info', '1301170046', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(48, 'Dusty Dicki', 'swift.delfina@bodeokuneva.biz', '1301170047', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(49, 'Wendy Effertz', 'rippin.rosie@gmail.com', '1301170048', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(50, 'Mrs. Destiney Powlowski Sr.', 'cwehner@hammesdonnelly.com', '1301170049', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(51, 'Granville Haag', 'kerluke.wilma@hotmail.com', '1301170050', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(52, 'Abbie Russel', 'sdoyle@schusterboyer.com', '1301170051', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(53, 'Mariana Botsford', 'shyann13@hotmail.com', '1301170052', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(54, 'Moriah Oberbrunner', 'clint.carter@gmail.com', '1301170053', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(55, 'Prof. Genevieve Schaden', 'leo.veum@yahoo.com', '1301170054', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(56, 'London Wolf', 'friesen.kenna@hammeseffertz.biz', '1301170055', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(57, 'Zola Stark', 'yesenia.robel@boehmstroman.org', '1301170056', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(58, 'Mrs. Justine Dibbert', 'bins.ramon@kassulke.com', '1301170057', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(59, 'Mrs. Ettie Kerluke PhD', 'arnoldo.sanford@cummerata.biz', '1301170058', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(60, 'Bertha Heller', 'garrison.cole@yahoo.com', '1301170059', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(61, 'Prof. Terry Volkman DVM', 'stevie02@gmail.com', '1301170060', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(62, 'Nick Conn', 'qhessel@altenwerth.com', '1301170061', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(63, 'Stone Treutel', 'jailyn52@hotmail.com', '1301170062', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(64, 'Sandy Hintz', 'jayde34@hesselfranecki.info', '1301170063', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(65, 'Danyka Reynolds', 'gdouglas@hotmail.com', '1301170064', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(66, 'Ahmad Kautzer', 'elda86@gmail.com', '1301170065', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(67, 'Olga Prohaska', 'usanford@hotmail.com', '1301170066', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(68, 'Jamarcus Blanda', 'ld\'amore@mohr.com', '1301170067', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(69, 'Prof. Izaiah Brakus', 'nfisher@nienow.com', '1301170068', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(70, 'Michael Stroman II', 'darrick.bradtke@gmail.com', '1301170069', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(71, 'Zaria Jacobson PhD', 'hayden50@ullrichkeebler.net', '1301170070', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(72, 'Dr. Abelardo Daniel', 'mertz.skylar@gmail.com', '1301170071', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(73, 'Jaydon Lang', 'corbin22@zieme.info', '1301170072', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(74, 'Savanna Wyman', 'okoelpin@hotmail.com', '1301170073', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(75, 'Ms. Ila Cremin Sr.', 'xpfeffer@mcdermott.com', '1301170074', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(76, 'Mr. Kenny Friesen MD', 'lowe.shad@frami.com', '1301170075', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(77, 'Cruz Kessler', 'virgie.will@yahoo.com', '1301170076', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(78, 'Chelsie Kessler', 'lebert@hotmail.com', '1301170077', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(79, 'Miss Christine Torp Sr.', 'era.macejkovic@yahoo.com', '1301170078', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(80, 'Prof. Kristoffer Mraz', 'ekling@murray.com', '1301170079', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(81, 'Aletha Little V', 'leannon.colby@baileybauch.net', '1301170080', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(82, 'Dr. Stan Fritsch', 'ambrose17@yahoo.com', '1301170081', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(83, 'Hannah Wilkinson V', 'ryley35@hotmail.com', '1301170082', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(84, 'Zita Goldner', 'lwiza@bechtelarlang.com', '1301170083', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(85, 'Mrs. Jacky Boyle', 'mernser@hammes.com', '1301170084', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(86, 'Robin Bailey', 'izieme@waelchi.com', '1301170085', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(87, 'Dolores Okuneva', 'qboyle@jacobijones.biz', '1301170086', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(88, 'Kristofer Hilpert', 'rachelle92@hotmail.com', '1301170087', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(89, 'Mckayla Leannon DVM', 'randal.pollich@franecki.com', '1301170088', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(90, 'Ms. Ima Hayes', 'lynch.alyson@murazik.info', '1301170089', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(91, 'Miss Brisa Schaefer III', 'murazik.esmeralda@gmail.com', '1301170090', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(92, 'Gloria Veum', 'qlangosh@pollich.org', '1301170091', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(93, 'Dr. Rudolph Friesen', 'sgreenholt@lubowitzkris.net', '1301170092', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(94, 'Trenton Denesik', 'minnie03@weberhammes.net', '1301170093', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(95, 'Esta Gorczany', 'edd.rutherford@yahoo.com', '1301170094', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(96, 'King Toy', 'dfritsch@gmail.com', '1301170095', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(97, 'Miss Andreanne Prohaska DVM', 'althea02@hotmail.com', '1301170096', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(98, 'Waino Roberts', 'ianderson@marvincorkery.org', '1301170097', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(99, 'Dr. Brown Cummerata', 'elda10@predoviclemke.com', '1301170098', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(100, 'Tillman Keeling III', 'gabbott@aufderhar.com', '1301170099', 'IF-41-INT', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
-(102, 'john', 'john@john.john', '1301170100', 'IF-41-INT', 'default.jpg', '$2y$10$oo0rkfHkTTtK9DiAdjtOEumAcdb5J.YvbKgqpWXNHsc0WodC8QWv6', 3, 1, 1622438723),
-(103, 'angel angel', 'angel@angel.angel', '1301170101', 'IF-41-INT', 'default.jpg', '$2y$10$Lz5cbzql205CFceRTbc0VeSsk4cqL2R.8Gk25D228Uy0lyzrjuqqi', 2, 1, 1622453504),
-(108, 'zharfan', 'zharfan@zharfan.zharfan', '', '', 'default.jpg', '$2y$10$fC5/osx.dNgeTJdqTl/LEOn2sdvlu.yxPOM3aTTuWWPN4yPSkYDhi', 2, 1, 1623614253);
+INSERT INTO `user` (`id`, `name`, `email`, `sid`, `class_id`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
+(1, 'Akmal Ariq Santoso', 'akmal@akmal.akmal', '1301170000', '13', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 1, 1, 1622087704),
+(2, 'ariq ariq', 'ariq@ariq.ariq', '1301170001', '13', 'default.jpg', '$2y$10$SaXySmv0QOxyUwEc7xr1D.ZxpJ/MRj/e9RQqo2WygaCuoHg4ae1eC', 3, 1, 1622106366),
+(3, 'adrian', 'adrian@adrian.adrian', '1301170002', '13', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 2, 1, 1622106366),
+(4, 'anas', 'anas@anas.anas', '1301170003', '13', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 4, 1, 1622106366),
+(5, 'angel angel', 'angel@angel.angel', '1301170101', '13', 'default.jpg', '$2y$10$Lz5cbzql205CFceRTbc0VeSsk4cqL2R.8Gk25D228Uy0lyzrjuqqi', 2, 1, 1622453504),
+(6, 'sana', 'san@san.san', '1301171234', '13', 'default.jpg', '$2y$10$LsLNGEf33qKL69D5MvO13udrxNpSr2hbLjzbAR/HZfa.zWhDoBWHK', 3, 1, 1623722721),
+(12, 'akmal santoso', 'santoso54321@gmail.com', '1301174378', '13', 'default.jpg', '$2y$10$71spVJ/So1DwdCE0y7vMgOtaDOnp0H4z01hBANEs2gSjxI/ZIRiLi', 3, 1, 1623854811);
 
 -- --------------------------------------------------------
 
@@ -451,42 +408,13 @@ CREATE TABLE `user_access_menu` (
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
-(4, 1, 1),
-(5, 1, 4),
-(9, 1, 3),
-(11, 1, 7),
-(12, 4, 7),
-(31, 1, 5),
-(33, 1, 2),
-(35, 2, 2),
-(36, 2, 4),
-(37, 3, 3),
-(38, 3, 2),
-(39, 3, 4),
-(40, 4, 5),
-(41, 4, 2),
-(42, 4, 4);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_assign`
---
-
-CREATE TABLE `user_assign` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  `mata_kuliah_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user_assign`
---
-
-INSERT INTO `user_assign` (`id`, `user_id`, `role_id`, `mata_kuliah_id`) VALUES
-(1, 1, 2, 1),
-(4, 1, 3, 2);
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 2, 2),
+(5, 2, 3),
+(6, 3, 2),
+(7, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -505,10 +433,8 @@ CREATE TABLE `user_menu` (
 
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (1, 'Admin'),
-(2, 'User'),
-(3, 'Assistant'),
-(4, 'Practicum'),
-(5, 'Recruitment');
+(2, 'Profile'),
+(3, 'Practicum');
 
 -- --------------------------------------------------------
 
@@ -527,9 +453,8 @@ CREATE TABLE `user_role` (
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
 (1, 'Administrator'),
-(2, 'Student'),
-(3, 'Practicum Assistant'),
-(4, 'Candidate');
+(2, 'Practicum Assistant'),
+(3, 'Candidate');
 
 -- --------------------------------------------------------
 
@@ -552,16 +477,25 @@ CREATE TABLE `user_sub_menu` (
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
 (1, 1, 'Dashboard', 'admin', 'fas da-fw fa-tachometer-alt', 1),
-(2, 2, 'My Profile', 'user', 'fas fa-fw fa-user', 1),
-(3, 2, 'Edit Profile', 'user/edit', 'fas fa-fw fa-user-edit', 1),
-(4, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-tie', 1),
-(5, 2, 'Change Password', 'user/change_password', 'fas fa-fw fa-lock', 1),
-(6, 1, 'Role Access', 'admin/role_access', 'fas fa-fw fa-user-tie', 1),
-(7, 4, 'Schedule', 'practicum', 'far fa-fw fa-calendar-alt', 1),
-(8, 3, 'Assistant Schedule', 'assistant', 'far fa-fw fa-calendar-alt', 1),
-(9, 4, 'Announcements', 'practicum/announcements', 'fas fa-fw fa-bullhorn', 1),
-(10, 5, 'Recruitment Phase', 'recruitment', 'fas fa-fw fa-user-plus', 1),
-(13, 1, 'Create Announcements', 'admin/create_announcement', 'fas fa-fw fa-bullhorn', 1);
+(2, 1, 'Create Announcements', 'admin/create_announcement', 'fas fa-fw fa-bullhorn', 1),
+(3, 2, 'My Profile', 'profile', 'fas fa-fw fa-user', 1),
+(4, 2, 'Change Password', 'profile/change_password', 'fas fa-fw fa-lock', 1),
+(5, 3, 'Assistant Schedule', 'practicum', 'far fa-fw fa-calendar-alt', 1),
+(6, 3, 'Announcements', 'practicum/announcements', 'fas fa-fw fa-bullhorn', 1),
+(7, 3, 'Recruitment Phase', 'practicum/recruitment', 'fas fa-fw fa-user-plus', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_token`
+--
+
+CREATE TABLE `user_token` (
+  `id` int(11) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `token` varchar(128) NOT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -580,9 +514,21 @@ ALTER TABLE `attendance`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `class`
+--
+ALTER TABLE `class`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `course`
 --
 ALTER TABLE `course`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `document`
+--
+ALTER TABLE `document`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -610,12 +556,6 @@ ALTER TABLE `user_access_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_assign`
---
-ALTER TABLE `user_assign`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `user_menu`
 --
 ALTER TABLE `user_menu`
@@ -634,6 +574,12 @@ ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_token`
+--
+ALTER TABLE `user_token`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -641,7 +587,7 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `attendance`
@@ -650,10 +596,22 @@ ALTER TABLE `attendance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `class`
+--
+ALTER TABLE `class`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `document`
+--
+ALTER TABLE `document`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `modul`
@@ -671,19 +629,13 @@ ALTER TABLE `schedule`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
-
---
--- AUTO_INCREMENT for table `user_assign`
---
-ALTER TABLE `user_assign`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=490;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
@@ -702,6 +654,12 @@ ALTER TABLE `user_role`
 --
 ALTER TABLE `user_sub_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11113;
+
+--
+-- AUTO_INCREMENT for table `user_token`
+--
+ALTER TABLE `user_token`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
