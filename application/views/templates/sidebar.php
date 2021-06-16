@@ -43,7 +43,7 @@
         ?>
 
         <?php foreach ($subMenu as $sm) : ?>
-            <!-- Nav Item - Dashboard -->
+            <!-- Nav Item - Sidebar -->
             <?php if ($title == $sm['title']) : ?>
                 <li class="nav-item active">
                 <?php else : ?>

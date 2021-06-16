@@ -59,13 +59,14 @@ class Practicum extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('assistant/schedule', $data);
+        $this->load->view('practicum/schedule', $data);
         $this->load->view('templates/footer');
     }
 
     public function finance()
     {
-        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $id = $this->session->userdata('id');
+        $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array();
 
         $data['title'] = "Finance";
 
@@ -79,7 +80,8 @@ class Practicum extends CI_Controller
     public function validateattendance($modul_id)
     {
 
-        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $id = $this->session->userdata('id');
+        $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array();
 
         $this->db->select('course, modul');
         $this->db->from('modul');
@@ -136,19 +138,6 @@ class Practicum extends CI_Controller
         redirect("assistant/validateattendance/" . $modul_id);
     }
 
-    public function recruitment()
-    {
-        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
-        // echo "selamat datang " . $data['user']['name'];
-
-        $data['title'] = "Recruitment Phase";
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('recruitment/phase', $data);
-        $this->load->view('templates/footer');
-    }
 
     ################################# Announcement #################################
 
@@ -169,5 +158,106 @@ class Practicum extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('practicum/announcements', $data);
         $this->load->view('templates/footer');
+    }
+
+
+    ################################# Recruitment #################################
+
+    public function recruitment()
+    {
+        $id = $this->session->userdata('id');
+        $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array(); // get this session's credentials
+
+        $data['title'] = "Recruitment Phase";
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('practicum/recruitment', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function upload_document()
+    {
+        $id = $this->session->userdata('id');
+        $this->db->select('user.id as id, name, sid, class, email, role');
+        $this->db->from('user');
+        $this->db->join('class', 'user.class_id = class.id');
+        $this->db->join('user_role', 'user.role_id = user_role.id');
+        $this->db->where('user.id', $id);
+        $data['user'] = $this->db->get()->row_array(); // get this session's credentials
+
+        $data['class'] = $this->db->get('class')->result_array(); // get all class
+
+        $data['title'] = "Upload Document";
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('practicum/upload_document', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function do_upload()
+    {
+        $id = $this->session->userdata('id');
+        $this->db->select('sid');
+        $this->db->from('user');
+        $this->db->where('user.id', $id);
+        $user = $this->db->get()->row_array(); // get this session's credentials
+
+        $dir = $user['sid']; // use sid as a directory name
+
+        // check if directory exist
+        if (is_dir('./uploads/' . $dir) === false) {
+            mkdir('./uploads/' . $dir); // create directory
+        }
+
+        // Motivation Letter
+
+        $config['upload_path']          = './uploads/' . $dir;  // path for uploaded file
+        $config['allowed_types']        = 'pdf|docx';           // file types allowed to be uploaded
+        $config['max_size']             = 500;                  // max file size (500 kb)
+
+
+        $this->load->library('upload', $config); // load library with config
+
+        // checks if file has been uploaded
+        if (!$this->upload->do_upload('ml')) {
+
+            // if not show error message
+            $error = array('error' => $this->upload->display_errors());
+            $this->session->set_flashdata('message_ml', '<div class="alert alert-danger" role="alert">' . $error . '</div>');
+        } else {
+
+            // show success message
+            $this->session->set_flashdata('message_ml', '<div class="alert alert-success" role="alert">Motivation Letter Upload Successful </div>');
+        }
+
+        // CV
+
+        $config['upload_path']          = './uploads/' . $dir;  // path for uploaded file
+        $config['allowed_types']        = 'pdf|docx';           // file types allowed to be uploaded
+        $config['max_size']             = 500;                  // max file size (500 kb)
+
+        $this->load->library('upload', $config); // load library with config
+
+        // checks if file has been uploaded
+        if (!$this->upload->do_upload('cv')) {
+
+            // if not show error message
+            $error = array('error' => $this->upload->display_errors());
+            $this->session->set_flashdata('message_cv', '<div class="alert alert-danger" role="alert">' . $error . '</div>');
+        } else {
+
+            // show success message
+            $this->session->set_flashdata('message_cv', '<div class="alert alert-success" role="alert">CV Upload Successful </div>');
+        }
+
+
+
+
+
+        redirect('practicum/upload_document');
     }
 }

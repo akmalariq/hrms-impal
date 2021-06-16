@@ -40,6 +40,7 @@ class Admin extends CI_Controller
         if (!$keyword) {
             $this->db->select('user.id AS id, name, email, sid, class, role, date_created');
             $this->db->from('user');
+            $this->db->join('class', 'user.class_id = class.id');
             $this->db->join('user_role', 'user.role_id = user_role.id');
             $data['users'] = $this->db->get()->result_array(); // get all users with their roles
         } else {
@@ -48,6 +49,7 @@ class Admin extends CI_Controller
 
             $this->db->select('user.id AS id, name, email, sid, class, role, date_created');
             $this->db->from('user');
+            $this->db->join('class', 'user.class_id = class.id');
             $this->db->join('user_role', 'user.role_id = user_role.id');
             $this->db->like('name', $keyword);
             $this->db->or_like('email', $keyword);
@@ -224,6 +226,7 @@ class Admin extends CI_Controller
         $id = $this->session->userdata('id');
         $this->db->select('user.id as id, name, sid, class, role');
         $this->db->from('user');
+        $this->db->join('class', 'user.class_id = class.id');
         $this->db->join('user_role', 'user.role_id = user_role.id');
         $this->db->where('user.id', $id);
         $data['user'] = $this->db->get()->row_array(); // get this session's credentials

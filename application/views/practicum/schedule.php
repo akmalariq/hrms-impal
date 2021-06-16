@@ -3,6 +3,7 @@
     <!-- QUERY SCHEDULE -->
 
 
+    <h3 class="float-right">Salary: <span><?= "Rp " . number_format($attendance["attend"] * 30000, 2, ',', '.') ?></span></h3>
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
 
@@ -29,9 +30,13 @@
                     <?= $s['course'] ?>
                 </h4>
                 <div class="float-right">
-                    <a class="btn btn-warning" href="<?= base_url('practicum/complaints') ?>">
-                        <i class="fas fa-fw fa-exclamation-circle"></i>
-                        Complain
+                    <a class="btn btn-primary" href="<?= base_url('assistant/validateattendance/') . $s['modul_id'] ?>">
+                        <i class="fas fa-fw fa-user-check"></i>
+                        Validate Attendance
+                    </a>
+                    <a class="btn btn-secondary" href="<?= base_url('assistant/replacement') ?>">
+                        <i class="fas fa-fw fa-people-arrows"></i>
+                        Replace me
                     </a>
                 </div>
             </div>

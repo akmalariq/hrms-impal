@@ -46,67 +46,67 @@ class Profile extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    // public function edit()
-    // {
-    //     $id = $this->session->userdata('id');
-    //     $this->db->select('user.id AS id, name, image, email, sid, class, role, date_created');
-    //     $this->db->from('user');
-    //     $this->db->join('class', 'user.class_id = class.id');
-    //     $this->db->join('user_role', 'user.role_id = user_role.id');
-    //     $this->db->where('user.id', $id);
-    //     $data['user'] = $this->db->get()->row_array(); // get this session's credentials
+    public function edit()
+    {
+        $id = $this->session->userdata('id');
+        $this->db->select('user.id AS id, name, image, email, sid, class, role, date_created');
+        $this->db->from('user');
+        $this->db->join('class', 'user.class_id = class.id');
+        $this->db->join('user_role', 'user.role_id = user_role.id');
+        $this->db->where('user.id', $id);
+        $data['user'] = $this->db->get()->row_array(); // get this session's credentials
 
-    //     $data['class'] = $this->db->get("class")->result_array(); // get all class
+        $data['class'] = $this->db->get("class")->result_array(); // get all class
 
-    //     // Sets rules from form validation (Check the inputs if valid)
+        // Sets rules from form validation (Check the inputs if valid)
 
-    //     // Sets rules for name {trim: to remove trailing whitespace, required: the field cannot be empty}
-    //     $this->form_validation->set_rules('name', 'Name', 'required|trim');
+        // Sets rules for name {trim: to remove trailing whitespace, required: the field cannot be empty}
+        $this->form_validation->set_rules('name', 'Name', 'required|trim');
 
-    //     // Sets rules for email {trim: to remove trailing whitespace, required: the field cannot be empty, valid_email: checks if the string is a valid email}
-    //     $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
+        // Sets rules for email {trim: to remove trailing whitespace, required: the field cannot be empty, valid_email: checks if the string is a valid email}
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
 
-    //     // Sets rules for student id {trim: to remove trailing whitespace, required: the field cannot be empty, is_unique from table: user cols: sid}
-    //     $this->form_validation->set_rules('sid', 'Student ID', 'required|trim|numeric|exact_length[10]', [
-    //         // Sets unique warning
-    //         'numeric' => "Student ID must be numeric",
-    //         'exact_length' => "Student ID must be 10 digits",
-    //     ]);
+        // Sets rules for student id {trim: to remove trailing whitespace, required: the field cannot be empty, is_unique from table: user cols: sid}
+        $this->form_validation->set_rules('sid', 'Student ID', 'required|trim|numeric|exact_length[10]', [
+            // Sets unique warning
+            'numeric' => "Student ID must be numeric",
+            'exact_length' => "Student ID must be 10 digits",
+        ]);
 
-    //     // Sets rules for student id {trim: to remove trailing whitespace, required: the field cannot be empty, is_unique from table: user cols: sid}
-    //     $this->form_validation->set_rules('class', 'Class', 'required');
+        // Sets rules for student id {trim: to remove trailing whitespace, required: the field cannot be empty, is_unique from table: user cols: sid}
+        $this->form_validation->set_rules('class', 'Class', 'required');
 
-    //     // Checks if form_validation has not run, shows login page. Else get input form
-    //     if ($this->form_validation->run() == false) {
+        // Checks if form_validation has not run, shows login page. Else get input form
+        if ($this->form_validation->run() == false) {
 
-    //         $data['title'] = "Edit Profile";
+            $data['title'] = "Edit Profile";
 
-    //         $this->load->view('templates/header', $data);
-    //         $this->load->view('templates/sidebar', $data);
-    //         $this->load->view('templates/topbar', $data);
-    //         $this->load->view('profile/edit', $data);
-    //         $this->load->view('templates/footer');
-    //     } else {
-    //         $newdata = [
-    //             // name is filtered through XSS filter and htmlspecialchars
-    //             'name' => htmlspecialchars($this->input->post('name', true)),
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('profile/edit', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $newdata = [
+                // name is filtered through XSS filter and htmlspecialchars
+                'name' => htmlspecialchars($this->input->post('name', true)),
 
-    //             // email is filtered through XSS filter and htmlspecialchars
-    //             'email' => htmlspecialchars($this->input->post('email', true)),
+                // email is filtered through XSS filter and htmlspecialchars
+                'email' => htmlspecialchars($this->input->post('email', true)),
 
-    //             // student id is filtered through XSS filter and htmlspecialchars
-    //             'sid' => htmlspecialchars($this->input->post('sid', true)),
+                // student id is filtered through XSS filter and htmlspecialchars
+                'sid' => htmlspecialchars($this->input->post('sid', true)),
 
-    //             // class is filtered through XSS filter and htmlspecialchars
-    //             'class_id' => $this->input->post('class', true)
-    //         ];
+                // class is filtered through XSS filter and htmlspecialchars
+                'class_id' => $this->input->post('class', true)
+            ];
 
-    //         $this->db->where('id', $data['user']['id']);
-    //         $this->db->update('user', $newdata);
-    //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profile has been updated</div>');
-    //         redirect('profile');
-    //     }
-    // }
+            $this->db->where('id', $data['user']['id']);
+            $this->db->update('user', $newdata);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profile has been updated</div>');
+            redirect('profile');
+        }
+    }
 
     public function change_password()
     {
