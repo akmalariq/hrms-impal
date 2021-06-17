@@ -38,10 +38,11 @@ class Admin extends CI_Controller
 
         $keyword = $this->input->post('keyword'); // get the keyword from search bar
         if (!$keyword) {
-            $this->db->select('user.id AS id, name, email, sid, class, role, date_created');
+            $this->db->select('user.id AS id, name, email, sid, class, role, role_id, date_created');
             $this->db->from('user');
             $this->db->join('class', 'user.class_id = class.id');
             $this->db->join('user_role', 'user.role_id = user_role.id');
+            $this->db->where('role_id', 2);
             $data['users'] = $this->db->get()->result_array(); // get all users with their roles
         } else {
             // $this->load->model('users_model'); // load users_model
@@ -55,7 +56,6 @@ class Admin extends CI_Controller
             $this->db->or_like('email', $keyword);
             $this->db->or_like('sid', $keyword);
             $this->db->or_like('class', $keyword);
-            $this->db->or_like('role', $keyword);
             $data['users'] = $this->db->get()->result_array(); // get all users with their roles
         }
 
@@ -96,9 +96,6 @@ class Admin extends CI_Controller
 
                 // email is filtered through XSS filter and htmlspecialchars
                 'email' => htmlspecialchars($this->input->post('email', true)),
-
-                // role_id is default to 2 for a user to be an admin, it needes to be referred by other admins
-                'role_id' => $this->input->post('role_id', true)
             ];
 
             // update the user's data with newdata
@@ -132,11 +129,10 @@ class Admin extends CI_Controller
         $data['assigned_user'] = $this->db->get_where()->row_array(); // get target user's credentials
 
         // get schedule
-        $this->db->select('role, course, modul, modul.date, attend');
+        $this->db->select('schedule.id AS id, course, modul_id, modul, modul.date, attend');
         $this->db->from('user');
         $this->db->join('class', 'user.class_id = class.id');
         $this->db->join('schedule', 'user.id = schedule.user_id');
-        $this->db->join('user_role', 'schedule.role_id = user_role.id');
         $this->db->join('modul', 'schedule.modul_id = modul.id');
         $this->db->join('course', 'modul.course_id = course.id');
         $this->db->where('user_id', $target_id);
@@ -172,7 +168,7 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function add_course($id, $course_id, $role_id)
+    public function add_course($id, $course_id)
     {
         $modul = $this->db->get_where('modul', ['course_id' => $course_id])->result_array(); // get all modul for the assigned course
 
@@ -180,31 +176,119 @@ class Admin extends CI_Controller
         foreach ($modul as $m) {
             $data = [
                 'user_id' => $id,
-                'role_id' => $role_id,
                 'modul_id' => $m['id']
             ];
             $this->db->insert("schedule", $data);
         }
 
         // return to original page
-        redirect("admin/assign_add/" . $id);
+        redirect("admin/add_assign/" . $id);
     }
 
-    public function delete_course($id, $role_id, $course_id)
+    public function delete_course($id, $course_id)
     {
         $modul = $this->db->get_where('modul', ['course_id' => $course_id])->result_array(); // get all modul for the assigned course
 
         // delete all of the modul from the course to schedule
         foreach ($modul as $m) {
             $data = [
-                'modul_id' => $m['id'],
-                'role_id' => $role_id
+                'modul_id' => $m['id']
             ];
             $this->db->delete("schedule", $data);
         }
 
         // return to original page
-        redirect("admin/assign_add/" . $id);
+        redirect("admin/add_assign/" . $id);
+    }
+
+    public function attend($schedule_id, $target_id, $attend)
+    {
+        if ($attend) {
+            $this->db->where('id', $schedule_id);
+            $this->db->update('schedule', array('attend' => 0));
+        } else {
+            $this->db->where('id', $schedule_id);
+            $this->db->update('schedule', array('attend' => 1));
+        }
+        redirect("admin/assign_user/" . $target_id);
+    }
+
+    ################################# Recruits #################################
+
+    public function recruits()
+    {
+        $id = $this->session->userdata('id');
+        $data['user'] = $this->db->get_where('user', ['id' => $id])->row_array(); // get this session's credentials
+
+        $data['title'] = "Recruits"; // add title page
+
+        $keyword = $this->input->post('keyword'); // get the keyword from search bar
+        if (!$keyword) {
+            $this->db->select('user.id AS id, name, sid, class, role, phase, course_id');
+            $this->db->from('recruitment');
+            $this->db->join('user', 'recruitment.user_id = user.id');
+            $this->db->join('class', 'user.class_id = class.id');
+            $this->db->join('user_role', 'user.role_id = user_role.id');
+            $data['users'] = $this->db->get()->result_array(); // get all users with their roles
+        } else {
+            // $this->load->model('users_model'); // load users_model
+            // $data['users'] =  $this->users_model->search($keyword); // get all users with their roles by keyword
+
+            $this->db->select('user.id AS id, name, sid, class, role, phase, course_id');
+            $this->db->from('recruitment');
+            $this->db->join('user', 'recruitment.user_id = user.id');
+            $this->db->join('class', 'user.class_id = class.id');
+            $this->db->join('user_role', 'user.role_id = user_role.id');
+            $this->db->like('name', $keyword);
+            $this->db->or_like('email', $keyword);
+            $this->db->or_like('sid', $keyword);
+            $this->db->or_like('class', $keyword);
+            $this->db->or_like('role', $keyword);
+            $data['users'] = $this->db->get()->result_array(); // get all users with their roles
+        }
+
+        // load page
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/recruits', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function accept($target_id, $phase, $course_id)
+    {
+
+        if ($phase < 3) {
+            $phase = $phase + 1;
+            $newdata = [
+                // phase is filtered through XSS filter and htmlspecialchars
+                'phase' => $phase
+            ];
+            $this->db->where('user_id', $target_id);
+            $this->db->update('recruitment', $newdata);
+        } else {
+            $newdata = [
+                // phase is filtered through XSS filter and htmlspecialchars
+                'role_id' => 2
+            ];
+            $this->db->where('id', $target_id);
+            $this->db->update('user', $newdata);
+
+            $modul = $this->db->get_where('modul', ['course_id' => $course_id])->result_array(); // get all modul for the assigned course
+
+            // insert all of the modul from the course to schedule
+            foreach ($modul as $m) {
+                $data = [
+                    'user_id' => $target_id,
+                    'modul_id' => $m['id']
+                ];
+                $this->db->insert("schedule", $data);
+            }
+
+            $this->db->delete("recruitment", ['user_id' => $target_id]);
+        }
+
+        redirect('admin/recruits');
     }
 
     ################################# Role #################################
