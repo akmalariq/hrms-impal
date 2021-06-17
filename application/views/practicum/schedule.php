@@ -30,10 +30,12 @@
                     <?= $s['course'] ?>
                 </h4>
                 <div class="float-right">
-                    <a class="btn btn-primary" href="<?= base_url('assistant/validateattendance/') . $s['modul_id'] ?>">
-                        <i class="fas fa-fw fa-user-check"></i>
-                        Validate Attendance
-                    </a>
+                    <?php if ($user['role_id'] == 1) : ?>
+                        <a class="btn btn-primary" href="<?= base_url('practicum/validateattendance/') . $s['modul_id'] ?>">
+                            <i class="fas fa-fw fa-user-check"></i>
+                            Validate Attendance
+                        </a>
+                    <?php endif; ?>
                     <a class="btn btn-secondary" href="<?= base_url('assistant/replacement') ?>">
                         <i class="fas fa-fw fa-people-arrows"></i>
                         Replace me

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2021 at 08:12 PM
+-- Generation Time: Jun 17, 2021 at 08:55 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -124,6 +124,7 @@ INSERT INTO `course` (`id`, `course`) VALUES
 CREATE TABLE `document` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `type` varchar(2) NOT NULL,
   `file_name` varchar(128) NOT NULL,
   `full_path` varchar(128) NOT NULL,
   `file_ext` varchar(8) NOT NULL,
@@ -134,10 +135,32 @@ CREATE TABLE `document` (
 -- Dumping data for table `document`
 --
 
-INSERT INTO `document` (`id`, `user_id`, `file_name`, `full_path`, `file_ext`, `file_size`) VALUES
-(6, 1, '1301170000_cv8.pdf', 'C:/xampp/htdocs/github/hrms-impal/uploads/1301170000/1301170000_cv8.pdf', '.pdf', '109.96'),
-(7, 1, '1301170000_cv.pdf', 'C:/xampp/htdocs/github/hrms-impal/uploads/1301170000/1301170000_cv.pdf', '.pdf', '109.96'),
-(8, 0, '1301170000_ml.pdf', 'C:/xampp/htdocs/github/hrms-impal/uploads/1301170000/1301170000_ml.pdf', '.pdf', '109.96');
+INSERT INTO `document` (`id`, `user_id`, `type`, `file_name`, `full_path`, `file_ext`, `file_size`) VALUES
+(11, 1, 'cv', '1301170000_cv.pdf', 'C:/xampp/htdocs/github/hrms-impal/uploads/1301170000/1301170000_cv.pdf', '.pdf', '109.96'),
+(12, 1, 'ml', '1301170000_ml.pdf', 'C:/xampp/htdocs/github/hrms-impal/uploads/1301170000/1301170000_ml.pdf', '.pdf', '109.96'),
+(14, 12, 'cv', '1301174378_cv.pdf', 'C:/xampp/htdocs/github/hrms-impal/uploads/1301174378/1301174378_cv.pdf', '.pdf', '109.96'),
+(15, 12, 'ml', '1301174378_ml.pdf', 'C:/xampp/htdocs/github/hrms-impal/uploads/1301174378/1301174378_ml.pdf', '.pdf', '109.96');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `interview_schedule`
+--
+
+CREATE TABLE `interview_schedule` (
+  `id` int(11) NOT NULL,
+  `date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `interview_schedule`
+--
+
+INSERT INTO `interview_schedule` (`id`, `date`) VALUES
+(0, 0),
+(1, 1623493800),
+(2, 1623501000),
+(3, 1623508200);
 
 -- --------------------------------------------------------
 
@@ -181,126 +204,150 @@ INSERT INTO `modul` (`id`, `course_id`, `modul`, `date`) VALUES
 (22, 2, 'Module 10', 1619983800),
 (23, 2, 'Module 11', 1621798200),
 (24, 2, 'Module 12', 1622403000),
-(26, 3, 'Modul 1', 1623139345),
-(27, 3, 'Modul 2', 1623139345),
-(28, 3, 'Modul 3', 1623139345),
-(29, 3, 'Modul 4', 1623139345),
-(30, 3, 'Modul 5', 1623139345),
-(31, 3, 'Modul 6', 1623139345),
-(32, 3, 'Modul 7', 1623139345),
-(33, 3, 'Modul 8', 1623139345),
-(34, 3, 'Modul 9', 1623139346),
-(35, 3, 'Modul 10', 1623139346),
-(36, 3, 'Modul 11', 1623139346),
-(37, 3, 'Modul 12', 1623139346),
-(38, 4, 'Modul 1', 1623139346),
-(39, 4, 'Modul 2', 1623139346),
-(40, 4, 'Modul 3', 1623139346),
-(41, 4, 'Modul 4', 1623139346),
-(42, 4, 'Modul 5', 1623139346),
-(43, 4, 'Modul 6', 1623139346),
-(44, 4, 'Modul 7', 1623139346),
-(45, 4, 'Modul 8', 1623139346),
-(46, 4, 'Modul 9', 1623139346),
-(47, 4, 'Modul 10', 1623139346),
-(48, 4, 'Modul 11', 1623139346),
-(49, 4, 'Modul 12', 1623139346),
-(50, 5, 'Modul 1', 1623139346),
-(51, 5, 'Modul 2', 1623139346),
-(52, 5, 'Modul 3', 1623139346),
-(53, 5, 'Modul 4', 1623139346),
-(54, 5, 'Modul 5', 1623139346),
-(55, 5, 'Modul 6', 1623139346),
-(56, 5, 'Modul 7', 1623139346),
-(57, 5, 'Modul 8', 1623139346),
-(58, 5, 'Modul 9', 1623139346),
-(59, 5, 'Modul 10', 1623139346),
-(60, 5, 'Modul 11', 1623139346),
-(61, 5, 'Modul 12', 1623139346),
-(62, 6, 'Modul 1', 1623139346),
-(63, 6, 'Modul 2', 1623139346),
-(64, 6, 'Modul 3', 1623139346),
-(65, 6, 'Modul 4', 1623139346),
-(66, 6, 'Modul 5', 1623139346),
-(67, 6, 'Modul 6', 1623139346),
-(68, 6, 'Modul 7', 1623139346),
-(69, 6, 'Modul 8', 1623139346),
-(70, 6, 'Modul 9', 1623139346),
-(71, 6, 'Modul 10', 1623139346),
-(72, 6, 'Modul 11', 1623139346),
-(73, 6, 'Modul 12', 1623139346),
-(74, 7, 'Modul 1', 1623139346),
-(75, 7, 'Modul 2', 1623139346),
-(76, 7, 'Modul 3', 1623139346),
-(77, 7, 'Modul 4', 1623139346),
-(78, 7, 'Modul 5', 1623139346),
-(79, 7, 'Modul 6', 1623139346),
-(80, 7, 'Modul 7', 1623139346),
-(81, 7, 'Modul 8', 1623139346),
-(82, 7, 'Modul 9', 1623139346),
-(83, 7, 'Modul 10', 1623139346),
-(84, 7, 'Modul 11', 1623139346),
-(85, 7, 'Modul 12', 1623139346),
-(86, 8, 'Modul 1', 1623139346),
-(87, 8, 'Modul 2', 1623139346),
-(88, 8, 'Modul 3', 1623139346),
-(89, 8, 'Modul 4', 1623139346),
-(90, 8, 'Modul 5', 1623139346),
-(91, 8, 'Modul 6', 1623139346),
-(92, 8, 'Modul 7', 1623139346),
-(93, 8, 'Modul 8', 1623139346),
-(94, 8, 'Modul 9', 1623139346),
-(95, 8, 'Modul 10', 1623139346),
-(96, 8, 'Modul 11', 1623139346),
-(97, 8, 'Modul 12', 1623139346),
-(98, 9, 'Modul 1', 1623139346),
-(99, 9, 'Modul 2', 1623139346),
-(100, 9, 'Modul 3', 1623139346),
-(101, 9, 'Modul 4', 1623139346),
-(102, 9, 'Modul 5', 1623139346),
-(103, 9, 'Modul 6', 1623139346),
-(104, 9, 'Modul 7', 1623139346),
-(105, 9, 'Modul 8', 1623139346),
-(106, 9, 'Modul 9', 1623139346),
-(107, 9, 'Modul 10', 1623139346),
-(108, 9, 'Modul 11', 1623139346),
-(109, 9, 'Modul 12', 1623139346),
-(110, 10, 'Modul 1', 1623139346),
-(111, 10, 'Modul 2', 1623139346),
-(112, 10, 'Modul 3', 1623139346),
-(113, 10, 'Modul 4', 1623139346),
-(114, 10, 'Modul 5', 1623139346),
-(115, 10, 'Modul 6', 1623139346),
-(116, 10, 'Modul 7', 1623139346),
-(117, 10, 'Modul 8', 1623139346),
-(118, 10, 'Modul 9', 1623139346),
-(119, 10, 'Modul 10', 1623139346),
-(120, 10, 'Modul 11', 1623139346),
-(121, 10, 'Modul 12', 1623139346),
-(122, 11, 'Modul 1', 1623139612),
-(123, 11, 'Modul 2', 1623139612),
-(124, 11, 'Modul 3', 1623139612),
-(125, 11, 'Modul 4', 1623139612),
-(126, 11, 'Modul 5', 1623139612),
-(127, 11, 'Modul 6', 1623139612),
-(128, 11, 'Modul 7', 1623139612),
-(129, 11, 'Modul 8', 1623139612),
-(130, 11, 'Modul 9', 1623139612),
-(131, 11, 'Modul 10', 1623139612),
-(132, 11, 'Modul 11', 1623139612),
-(133, 11, 'Modul 12', 1623139612),
-(134, 12, 'Modul 1', 1623139612),
-(135, 12, 'Modul 2', 1623139612),
-(136, 12, 'Modul 3', 1623139612),
-(137, 12, 'Modul 4', 1623139612),
-(138, 12, 'Modul 5', 1623139612),
-(139, 12, 'Modul 6', 1623139612),
-(140, 12, 'Modul 7', 1623139612),
-(141, 12, 'Modul 8', 1623139612),
-(142, 12, 'Modul 9', 1623139612),
-(143, 12, 'Modul 10', 1623139612),
-(144, 12, 'Modul 11', 1623139612),
-(145, 12, 'Modul 12', 1623139612);
+(26, 3, 'Modul 1', 1613331000),
+(27, 3, 'Modul 2', 1613935800),
+(28, 3, 'Modul 3', 1614540600),
+(29, 3, 'Modul 4', 1615145400),
+(30, 3, 'Modul 5', 1615750200),
+(31, 3, 'Modul 6', 1616355000),
+(32, 3, 'Modul 7', 1616959800),
+(33, 3, 'Modul 8', 1618774200),
+(34, 3, 'Modul 9', 1619379000),
+(35, 3, 'Modul 10', 1619983800),
+(36, 3, 'Modul 11', 1621798200),
+(37, 3, 'Modul 12', 1622403000),
+(38, 4, 'Modul 1', 1613331000),
+(39, 4, 'Modul 2', 1613935800),
+(40, 4, 'Modul 3', 1614540600),
+(41, 4, 'Modul 4', 1615145400),
+(42, 4, 'Modul 5', 1615750200),
+(43, 4, 'Modul 6', 1616355000),
+(44, 4, 'Modul 7', 1616959800),
+(45, 4, 'Modul 8', 1618774200),
+(46, 4, 'Modul 9', 1619379000),
+(47, 4, 'Modul 10', 1619983800),
+(48, 4, 'Modul 11', 1621798200),
+(49, 4, 'Modul 12', 1622403000),
+(50, 5, 'Modul 1', 1613331000),
+(51, 5, 'Modul 2', 1613935800),
+(52, 5, 'Modul 3', 1614540600),
+(53, 5, 'Modul 4', 1615145400),
+(54, 5, 'Modul 5', 1615750200),
+(55, 5, 'Modul 6', 1616355000),
+(56, 5, 'Modul 7', 1616959800),
+(57, 5, 'Modul 8', 1618774200),
+(58, 5, 'Modul 9', 1619379000),
+(59, 5, 'Modul 10', 1619983800),
+(60, 5, 'Modul 11', 1621798200),
+(61, 5, 'Modul 12', 1622403000),
+(62, 6, 'Modul 1', 1613331000),
+(63, 6, 'Modul 2', 1613935800),
+(64, 6, 'Modul 3', 1614540600),
+(65, 6, 'Modul 4', 1615145400),
+(66, 6, 'Modul 5', 1615750200),
+(67, 6, 'Modul 6', 1616355000),
+(68, 6, 'Modul 7', 1616959800),
+(69, 6, 'Modul 8', 1618774200),
+(70, 6, 'Modul 9', 1619379000),
+(71, 6, 'Modul 10', 1619983800),
+(72, 6, 'Modul 11', 1621798200),
+(73, 6, 'Modul 12', 1622403000),
+(74, 7, 'Modul 1', 1613331000),
+(75, 7, 'Modul 2', 1613935800),
+(76, 7, 'Modul 3', 1614540600),
+(77, 7, 'Modul 4', 1615145400),
+(78, 7, 'Modul 5', 1615750200),
+(79, 7, 'Modul 6', 1616355000),
+(80, 7, 'Modul 7', 1616959800),
+(81, 7, 'Modul 8', 1618774200),
+(82, 7, 'Modul 9', 1619379000),
+(83, 7, 'Modul 10', 1619983800),
+(84, 7, 'Modul 11', 1621798200),
+(85, 7, 'Modul 12', 1622403000),
+(86, 8, 'Modul 1', 1613331000),
+(87, 8, 'Modul 2', 1613935800),
+(88, 8, 'Modul 3', 1614540600),
+(89, 8, 'Modul 4', 1615145400),
+(90, 8, 'Modul 5', 1615750200),
+(91, 8, 'Modul 6', 1616355000),
+(92, 8, 'Modul 7', 1616959800),
+(93, 8, 'Modul 8', 1618774200),
+(94, 8, 'Modul 9', 1619379000),
+(95, 8, 'Modul 10', 1619983800),
+(96, 8, 'Modul 11', 1621798200),
+(97, 8, 'Modul 12', 1622403000),
+(98, 9, 'Modul 1', 1613331000),
+(99, 9, 'Modul 2', 1613935800),
+(100, 9, 'Modul 3', 1614540600),
+(101, 9, 'Modul 4', 1615145400),
+(102, 9, 'Modul 5', 1615750200),
+(103, 9, 'Modul 6', 1616355000),
+(104, 9, 'Modul 7', 1616959800),
+(105, 9, 'Modul 8', 1618774200),
+(106, 9, 'Modul 9', 1619379000),
+(107, 9, 'Modul 10', 1619983800),
+(108, 9, 'Modul 11', 1621798200),
+(109, 9, 'Modul 12', 1622403000),
+(110, 10, 'Modul 1', 1613331000),
+(111, 10, 'Modul 2', 1613935800),
+(112, 10, 'Modul 3', 1614540600),
+(113, 10, 'Modul 4', 1615145400),
+(114, 10, 'Modul 5', 1615750200),
+(115, 10, 'Modul 6', 1616355000),
+(116, 10, 'Modul 7', 1616959800),
+(117, 10, 'Modul 8', 1618774200),
+(118, 10, 'Modul 9', 1619379000),
+(119, 10, 'Modul 10', 1619983800),
+(120, 10, 'Modul 11', 1621798200),
+(121, 10, 'Modul 12', 1622403000),
+(122, 11, 'Modul 1', 1613331000),
+(123, 11, 'Modul 2', 1613935800),
+(124, 11, 'Modul 3', 1614540600),
+(125, 11, 'Modul 4', 1615145400),
+(126, 11, 'Modul 5', 1615750200),
+(127, 11, 'Modul 6', 1616355000),
+(128, 11, 'Modul 7', 1616959800),
+(129, 11, 'Modul 8', 1618774200),
+(130, 11, 'Modul 9', 1619379000),
+(131, 11, 'Modul 10', 1619983800),
+(132, 11, 'Modul 11', 1621798200),
+(133, 11, 'Modul 12', 1622403000),
+(134, 12, 'Modul 1', 1613331000),
+(135, 12, 'Modul 2', 1613935800),
+(136, 12, 'Modul 3', 1614540600),
+(137, 12, 'Modul 4', 1615145400),
+(138, 12, 'Modul 5', 1615750200),
+(139, 12, 'Modul 6', 1616355000),
+(140, 12, 'Modul 7', 1616959800),
+(141, 12, 'Modul 8', 1618774200),
+(142, 12, 'Modul 9', 1619379000),
+(143, 12, 'Modul 10', 1619983800),
+(144, 12, 'Modul 11', 1621798200),
+(145, 12, 'Modul 12', 1622403000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `recruitment`
+--
+
+CREATE TABLE `recruitment` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `cv_id` int(11) NOT NULL,
+  `ml_id` int(11) NOT NULL,
+  `phase` int(11) NOT NULL,
+  `written_id` int(11) NOT NULL,
+  `interview_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `recruitment`
+--
+
+INSERT INTO `recruitment` (`id`, `user_id`, `course_id`, `cv_id`, `ml_id`, `phase`, `written_id`, `interview_id`) VALUES
+(15, 6, 1, 0, 0, 3, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -311,7 +358,6 @@ INSERT INTO `modul` (`id`, `course_id`, `modul`, `date`) VALUES
 CREATE TABLE `schedule` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
   `modul_id` int(11) NOT NULL,
   `complain` text NOT NULL,
   `attend` int(1) NOT NULL
@@ -321,43 +367,31 @@ CREATE TABLE `schedule` (
 -- Dumping data for table `schedule`
 --
 
-INSERT INTO `schedule` (`id`, `user_id`, `role_id`, `modul_id`, `complain`, `attend`) VALUES
-(340, 1, 3, 13, '', 1),
-(341, 1, 3, 14, '', 1),
-(342, 1, 3, 15, '', 0),
-(343, 1, 3, 16, '', 0),
-(344, 1, 3, 17, '', 0),
-(345, 1, 3, 18, '', 0),
-(346, 1, 3, 19, '', 0),
-(347, 1, 3, 20, '', 0),
-(348, 1, 3, 21, '', 0),
-(349, 1, 3, 22, '', 0),
-(350, 1, 3, 23, '', 0),
-(351, 1, 3, 24, '', 0),
-(364, 2, 3, 13, '', 0),
-(365, 2, 3, 14, '', 0),
-(366, 2, 3, 15, '', 0),
-(367, 2, 3, 16, '', 0),
-(368, 2, 3, 17, '', 0),
-(369, 2, 3, 18, '', 0),
-(370, 2, 3, 19, '', 0),
-(371, 2, 3, 20, '', 0),
-(372, 2, 3, 21, '', 0),
-(373, 2, 3, 22, '', 0),
-(374, 2, 3, 23, '', 0),
-(375, 2, 3, 24, '', 0),
-(496, 1, 2, 13, '', 1),
-(497, 1, 2, 14, '', 0),
-(498, 1, 2, 15, '', 0),
-(499, 1, 2, 16, '', 0),
-(500, 1, 2, 17, '', 0),
-(501, 1, 2, 18, '', 0),
-(502, 1, 2, 19, '', 0),
-(503, 1, 2, 20, '', 0),
-(504, 1, 2, 21, '', 0),
-(505, 1, 2, 22, '', 0),
-(506, 1, 2, 23, '', 0),
-(507, 1, 2, 24, '', 0);
+INSERT INTO `schedule` (`id`, `user_id`, `modul_id`, `complain`, `attend`) VALUES
+(532, 6, 110, '', 1),
+(533, 6, 111, '', 0),
+(534, 6, 112, '', 0),
+(535, 6, 113, '', 0),
+(536, 6, 114, '', 0),
+(537, 6, 115, '', 0),
+(538, 6, 116, '', 0),
+(539, 6, 117, '', 0),
+(540, 6, 118, '', 0),
+(541, 6, 119, '', 0),
+(542, 6, 120, '', 0),
+(543, 6, 121, '', 0),
+(544, 3, 1, '', 1),
+(545, 3, 2, '', 0),
+(546, 3, 3, '', 0),
+(547, 3, 4, '', 0),
+(548, 3, 5, '', 0),
+(549, 3, 6, '', 0),
+(550, 3, 7, '', 0),
+(551, 3, 8, '', 0),
+(552, 3, 9, '', 0),
+(553, 3, 10, '', 0),
+(554, 3, 11, '', 0),
+(555, 3, 12, '', 0);
 
 -- --------------------------------------------------------
 
@@ -389,7 +423,8 @@ INSERT INTO `user` (`id`, `name`, `email`, `sid`, `class_id`, `image`, `password
 (4, 'anas', 'anas@anas.anas', '1301170003', '13', 'default.jpg', '$2y$10$St0OzSef189HVsyosW9V/ew/jEHrhA5RZhiDgXUZ3rGkAVPNiErZK', 4, 1, 1622106366),
 (5, 'angel angel', 'angel@angel.angel', '1301170101', '13', 'default.jpg', '$2y$10$Lz5cbzql205CFceRTbc0VeSsk4cqL2R.8Gk25D228Uy0lyzrjuqqi', 2, 1, 1622453504),
 (6, 'sana', 'san@san.san', '1301171234', '13', 'default.jpg', '$2y$10$LsLNGEf33qKL69D5MvO13udrxNpSr2hbLjzbAR/HZfa.zWhDoBWHK', 3, 1, 1623722721),
-(12, 'akmal santoso', 'santoso54321@gmail.com', '1301174378', '13', 'default.jpg', '$2y$10$71spVJ/So1DwdCE0y7vMgOtaDOnp0H4z01hBANEs2gSjxI/ZIRiLi', 3, 1, 1623854811);
+(12, 'akmal santoso', 'santoso@gmail.com', '1301174379', '13', 'default.jpg', '$2y$10$71spVJ/So1DwdCE0y7vMgOtaDOnp0H4z01hBANEs2gSjxI/ZIRiLi', 2, 1, 1623854811),
+(13, 'akmal santoso', 'santoso54321@gmail.com', '1301174378', '13', 'default.jpg', '$2y$10$TbFaiMbtzqv7pBYELAmPOulpFNj.iEqUdRcRXaVMouh8FfPLg.Gtu', 3, 1, 1623910175);
 
 -- --------------------------------------------------------
 
@@ -482,7 +517,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (4, 2, 'Change Password', 'profile/change_password', 'fas fa-fw fa-lock', 1),
 (5, 3, 'Assistant Schedule', 'practicum', 'far fa-fw fa-calendar-alt', 1),
 (6, 3, 'Announcements', 'practicum/announcements', 'fas fa-fw fa-bullhorn', 1),
-(7, 3, 'Recruitment Phase', 'practicum/recruitment', 'fas fa-fw fa-user-plus', 1);
+(7, 3, 'Recruitment Phase', 'practicum/recruitment', 'fas fa-fw fa-user-plus', 1),
+(8, 1, 'Recruits', 'admin/recruits', 'fas fa-fw fa-users', 1);
 
 -- --------------------------------------------------------
 
@@ -496,6 +532,27 @@ CREATE TABLE `user_token` (
   `token` varchar(128) NOT NULL,
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `written_test_schedule`
+--
+
+CREATE TABLE `written_test_schedule` (
+  `id` int(11) NOT NULL,
+  `date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `written_test_schedule`
+--
+
+INSERT INTO `written_test_schedule` (`id`, `date`) VALUES
+(0, 0),
+(1, 1623493800),
+(2, 1623501000),
+(3, 1623508200);
 
 --
 -- Indexes for dumped tables
@@ -532,9 +589,21 @@ ALTER TABLE `document`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `interview_schedule`
+--
+ALTER TABLE `interview_schedule`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `modul`
 --
 ALTER TABLE `modul`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `recruitment`
+--
+ALTER TABLE `recruitment`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -580,6 +649,12 @@ ALTER TABLE `user_token`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `written_test_schedule`
+--
+ALTER TABLE `written_test_schedule`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -611,7 +686,13 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `document`
 --
 ALTER TABLE `document`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `interview_schedule`
+--
+ALTER TABLE `interview_schedule`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `modul`
@@ -620,16 +701,22 @@ ALTER TABLE `modul`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
+-- AUTO_INCREMENT for table `recruitment`
+--
+ALTER TABLE `recruitment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=508;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=556;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
@@ -653,13 +740,19 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11113;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `written_test_schedule`
+--
+ALTER TABLE `written_test_schedule`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

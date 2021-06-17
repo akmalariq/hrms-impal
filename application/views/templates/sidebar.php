@@ -41,18 +41,24 @@
         ";
         $subMenu = $this->db->query($querySubMenu)->result_array();
         ?>
-
+        <?php
+        $id = $this->session->userdata('id');
+        $user = $this->db->get_where('user', ['id' => $id])->row_array();
+        ?>
         <?php foreach ($subMenu as $sm) : ?>
             <!-- Nav Item - Sidebar -->
-            <?php if ($title == $sm['title']) : ?>
-                <li class="nav-item active">
-                <?php else : ?>
-                <li class="nav-item">
+            <?php if (($user['role_id'] == 2) && ($sm['id'] == 7)) : ?>
+            <?php else : ?>
+                <?php if ($title == $sm['title']) : ?>
+                    <li class="nav-item active">
+                    <?php else : ?>
+                    <li class="nav-item">
+                    <?php endif; ?>
+                    <a class="nav-link pb-0" href="<?= base_url($sm['url']); ?>">
+                        <i class="<?= $sm['icon']; ?>"></i>
+                        <span><?= $sm['title']; ?></span></a>
+                    </li>
                 <?php endif; ?>
-                <a class="nav-link pb-0" href="<?= base_url($sm['url']); ?>">
-                    <i class="<?= $sm['icon']; ?>"></i>
-                    <span><?= $sm['title']; ?></span></a>
-                </li>
             <?php endforeach; ?>
 
             <!-- Divider -->

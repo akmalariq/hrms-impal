@@ -15,7 +15,7 @@
                     <h3 class="my-auto">
                         <?= $a['title'] ?>
                     </h3>
-                    <?php if (($user['role_id'] == 1) || ($user['role_id'] == 3)) : ?>
+                    <?php if ($user['role_id'] == 1) : ?>
                         <a class="btn btn-primary mx-2" href="<?= base_url("admin/edit_announcement/") . $a['id'] ?>" role="button">Edit</a>
                     <?php endif; ?>
                 </div>
